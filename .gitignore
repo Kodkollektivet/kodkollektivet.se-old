@@ -1,0 +1,13 @@
+
+bin/
+include/
+lib/
+
+*.pyc
+
+*~
+
+server/.idea
+client/.idea
+
+server/settings/production.py
