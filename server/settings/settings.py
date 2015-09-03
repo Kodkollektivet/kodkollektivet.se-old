@@ -47,6 +47,8 @@ INSTALLED_APPS = (
 
     'core',
     'info',
+    'github',
+    'projects',
 )
 
 MIDDLEWARE_CLASSES = (
