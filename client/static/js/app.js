@@ -4,8 +4,8 @@ angular.module('kodkollektivet', [
     'ui.bootstrap',
     'ngAside',
     'uiGmapgoogle-maps',
-    //'kodkollektivet.controllers',
-    //'kodkollektivet.services'
+    'kodkollektivet.controllers',
+    'kodkollektivet.services'
 ])
 
     .config(
@@ -24,5 +24,18 @@ angular.module('kodkollektivet', [
 
 
         //$locationProvider.html5Mode(false).hashPrefix('!');
+
+        $stateProvider
+            .state('index', {
+                url: "",
+                views: {
+                    "info": {
+                        templateUrl: "templates/info.html",
+                        controller: 'InfoController'
+                    },
+
+                }
+            });
+
 
     });
