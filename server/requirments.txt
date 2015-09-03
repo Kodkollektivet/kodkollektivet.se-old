@@ -9,3 +9,4 @@ psycopg2
 setproctitle
 django-admin-bootstrapped
 django-bootstrap3
+requests
