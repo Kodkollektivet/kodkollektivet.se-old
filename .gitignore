@@ -7,3 +7,4 @@ server/.idea
 client/.idea
 
 server/settings/production.py
+server/db.sqlite3
