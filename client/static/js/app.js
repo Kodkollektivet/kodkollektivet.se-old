@@ -63,7 +63,7 @@ angular.module('kodkollektivet', [
         });
 
         $stateProvider.state('app.details', {
-            url: 'details',
+            url: 'details/{projectSlug}',
             templateUrl: 'templates/project-details.html'
         });
 
