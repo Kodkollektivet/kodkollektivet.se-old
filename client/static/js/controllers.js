@@ -20,4 +20,18 @@ angular.module('kodkollektivet.controllers', [])
             $scope.procon = response;
         });
 
-    });
+    })
+
+.controller('ContactController', function($scope, Contact){
+
+    $scope.contact = {};
+    $scope.contact.name = '';
+    $scope.contact.email = '';
+    $scope.contact.tel = '';
+    $scope.contact.text = '';
+
+
+    $scope.submitContactForm = function(){
+        Contact.save($scope.contact);
+    };
+});
