@@ -26,7 +26,7 @@ angular.module('kodkollektivet.controllers', [])
 
             console.log(slug);
             $scope.currentDetail = slug;
-            $state.go(".details");
+            $state.go("^.details");
         };
 
     })

@@ -34,7 +34,7 @@ angular.module('kodkollektivet', [
             requireBase: false
         });
 
-        $urlRouterProvider.otherwise("/");
+
 
         $stateProvider.state('app', {
             url: '/',
@@ -62,14 +62,9 @@ angular.module('kodkollektivet', [
             dsr: true
         });
 
-        $stateProvider.state('app.projects.details', {
-            url: '/details',
-            templateUrl: 'templates/project-details.html',
-            views: {
-                'detail': {
-                    templateUrl: 'templates/project-details.html'
-                }
-            }
+        $stateProvider.state('app.details', {
+            url: 'details',
+            templateUrl: 'templates/project-details.html'
         });
 
         $stateProvider.state('app.contributors', {
