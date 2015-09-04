@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'info',
     'github',
     'projects',
+    'contact',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -146,3 +147,7 @@ TINYMCE_DEFAULT_CONFIG = {
 # Bootstrap Admin
 # https://github.com/django-admin-bootstrapped/django-admin-bootstrapped
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'
+
+
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

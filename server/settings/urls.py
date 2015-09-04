@@ -35,6 +35,8 @@ urlpatterns = [
 
     url(r'^', include(router.urls)),
 
+    url(r'^contact/', include('contact.urls')),
+
     url(r'^github/', include('github.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
 
