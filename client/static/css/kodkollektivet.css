@@ -31,3 +31,15 @@ html, body {
     /*background-color: rgba(251, 251, 251, 0.57);*/
     height: 102%
 }
+
+.infoContainerDiv{
+    height: 101%;
+    margin-top: -1%;
+    z-index: 1;
+    background-color: #469DE8;
+}
+
+.infoContainer{
+    background-color: red;
+    height: 100%;
+}

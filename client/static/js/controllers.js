@@ -7,12 +7,15 @@ angular.module('kodkollektivet.controllers', [])
     })
 
     .controller('ProjectController', function($scope, Project, Contributor, ProCon){
+
         Project.query(function(response){
             $scope.projects = response;
         });
+
         Contributor.query(function(response){
             $scope.contributors = response;
         });
+
         ProCon.query(function(response){
             $scope.procon = response;
         });
