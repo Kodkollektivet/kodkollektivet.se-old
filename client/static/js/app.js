@@ -45,24 +45,24 @@ angular.module('kodkollektivet', [
                     controller: 'InfoController'
                 },
                 'gh-view': {
-                    templateUrl: 'templates/gh-viewport.html',
-                    controller: 'InfoController'
+                    templateUrl: 'templates/gh-viewport.html'
                 }
             },
             dsr: true
         });
 
         $stateProvider.state('app.projects', {
-            url: 'projects',
-            templateUrl: 'templates/projects.html'
+            url: '',
+            templateUrl: 'templates/projects.html',
+            sticky: true,
+            controller: 'ProjectController'
         });
 
         $stateProvider.state('app.contributors', {
-            url: 'contrib',
-            templateUrl: 'templates/contributors.html'
+            url: '',
+            templateUrl: 'templates/contributors.html',
+            sticky: true
         });
 
         $stickyStateProvider.enableDebug(true);
         });
-
-
