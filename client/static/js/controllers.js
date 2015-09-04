@@ -39,8 +39,17 @@ angular.module('kodkollektivet.controllers', [])
     $scope.contact.tel = '';
     $scope.contact.text = '';
 
-
     $scope.submitContactForm = function(){
-        Contact.save($scope.contact);
+        Contact.save($scope.contact,
+            function(data){
+                //success callback
+                alert('Thank you!\nWe contact you soon!\nBest regards\n\t\t / Kodkollektivet')
+
+            },
+            function(err){
+                // error callback
+                //console.log(err.status);
+            }
+        );
     };
 });
