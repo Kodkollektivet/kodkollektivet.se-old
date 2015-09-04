@@ -6,7 +6,9 @@ angular.module('kodkollektivet.controllers', [])
         });
     })
 
-    .controller('ProjectController', function($scope, Project, Contributor, ProCon){
+    .controller('ProjectController', function($scope, $state, $stateParams, Project, Contributor, ProCon){
+
+        $scope.currentDetail = "";
 
         Project.query(function(response){
             $scope.projects = response;
@@ -19,6 +21,13 @@ angular.module('kodkollektivet.controllers', [])
         ProCon.query(function(response){
             $scope.procon = response;
         });
+
+        $scope.goToDetails = function(slug) {
+
+            console.log(slug);
+            $scope.currentDetail = slug;
+            $state.go(".details");
+        };
 
     })
 

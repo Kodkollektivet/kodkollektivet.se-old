@@ -58,11 +58,22 @@ angular.module('kodkollektivet', [
         $stateProvider.state('app.projects', {
             url: 'projects',
             templateUrl: 'templates/projects.html',
-            controller: 'ProjectController'
+            controller: 'ProjectController',
+            dsr: true
+        });
+
+        $stateProvider.state('app.projects.details', {
+            url: '/details',
+            templateUrl: 'templates/project-details.html',
+            views: {
+                'detail': {
+                    templateUrl: 'templates/project-details.html'
+                }
+            }
         });
 
         $stateProvider.state('app.contributors', {
-            url: 'contrib',
+            url: 'contributors',
             templateUrl: 'templates/contributors.html'
         });
 
