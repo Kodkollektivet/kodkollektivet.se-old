@@ -37,8 +37,8 @@ def get_contribs():
 
     for project in Project.objects.all():
         data = requests.get('https://api.github.com/repos/videumcodeup/'+project.gh_name+'/contributors').json()
-        pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(data)
+        #pp = pprint.PrettyPrinter(indent=4)
+        #pp.pprint(data)
         form = ContributorForm({
             'gh_login': data[0]['login'],
             'gh_url': data[0]['html_url']
