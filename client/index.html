@@ -18,6 +18,7 @@
     <script src="static/js/lib/angular.min.js"></script>
     <script src="static/js/lib/angular-resource.min.js"></script>
     <script src="static/js/lib/angular-ui-router.min.js"></script>
+    <script src="static/js/lib/ct-ui-router-extras.min.js"></script>
     <script src="static/js/lib/angular-animate.min.js"></script>
 
     <script src="static/js/lib/ui-bootstrap.min.js"></script>
@@ -58,7 +59,11 @@
 </div>
 
 
-<div style="background-color: #0059bc" ui-view="projects"></div>
+<div style="background-color: #0059bc;height: 100%; margin-top: -1%; z-index: 1;" ui-view="gh-view">
+
+
+</div>
+
 
 
 </body>

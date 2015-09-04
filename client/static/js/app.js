@@ -5,11 +5,12 @@ angular.module('kodkollektivet', [
     'ngAside',
     'uiGmapgoogle-maps',
     'kodkollektivet.controllers',
-    'kodkollektivet.services'
+    'kodkollektivet.services',
+    'ct.ui.router.extras'
 ])
 
     .config(
-    function ($httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
+    function ($httpProvider, $resourceProvider, $stateProvider, $stickyStateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
 
         // This only works in angular 3!
         // It makes dealing with Django slashes at the end of everything easier.
@@ -22,38 +23,49 @@ angular.module('kodkollektivet', [
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
+        //$urlRouterProvider.otherwise("/");
 
         //$locationProvider.html5Mode(true).hashPrefix('!');
 
         //$urlRouterProvider.otherwise("/");
 
-        $stateProvider
-
-            .state('app', {
-                url: '',
-                templateUrl: "index.html",
-                views: {
-                    'info': {
-                        templateUrl: 'templates/info.html',
-                        controller: 'InfoController'
-                    },
-                    'projects': {
-                        templateUrl: 'templates/projects.html',
-                        controller: 'ProjectController'
-                    }
+        $stateProvider.state('app', {
+            url: '/',
+            templateUrl: "index.html",
+            views: {
+                'info': {
+                    templateUrl: 'templates/info.html',
+                    controller: 'InfoController'
+                },
+                'gh-view': {
+                    templateUrl: 'templates/gh-viewport.html',
+                    controller: 'InfoController'
                 }
-            })
-
-
-            .state('projects',{
-                url: '',
-                templateUrl: "templates/projects.html",
-                controller: 'ProjectController'
-            })
-
-            .state('projects.list',{
-                url: '/list',
-                templateUrl: 'templates/projects.list.html',
-            })
+            }
         });
+
+        $stateProvider.state('app.projects',{
+            url: '/projects',
+            sticky: true,
+            dsr: true,
+            views: {
+                'projects': {
+                    templateUrl: 'templates/projects.html'
+                }
+            },
+        });
+
+        $stateProvider.state('app.contributors', {
+            url: '/contributors',
+            sticky: true,
+            views: {
+                'contributors': {
+                    templateUrl: 'templates/contributors.html'
+                }
+            }
+        });
+
+        $stickyStateProvider.enableDebug(true);
+        });
+
 
