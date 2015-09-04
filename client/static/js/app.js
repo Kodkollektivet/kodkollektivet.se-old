@@ -59,5 +59,3 @@ angular.module('kodkollektivet', [
 
         $stickyStateProvider.enableDebug(true);
         });
-
-
