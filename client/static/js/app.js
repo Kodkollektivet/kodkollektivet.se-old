@@ -37,25 +37,32 @@ angular.module('kodkollektivet', [
         $urlRouterProvider.otherwise("/");
 
         $stateProvider.state('app', {
-            url: '',
+            url: '/',
+            templateUrl: "index.html",
             views: {
                 'info': {
-                    templateUrl: 'index.html'
+                    templateUrl: 'templates/info.html',
+                    controller: 'InfoController'
+                },
+                'gh-view': {
+                    templateUrl: 'templates/gh-viewport.html',
+                    controller: 'InfoController'
                 }
             },
-            sticky: true,
             dsr: true
         });
 
         $stateProvider.state('app.projects', {
-            url: '/projects',
-            templateUrl: 'templatest/projects.html'
+            url: 'projects',
+            templateUrl: 'templates/projects.html'
         });
 
         $stateProvider.state('app.contributors', {
-            url: '/contrib',
+            url: 'contrib',
             templateUrl: 'templates/contributors.html'
         });
 
         $stickyStateProvider.enableDebug(true);
         });
+
+
