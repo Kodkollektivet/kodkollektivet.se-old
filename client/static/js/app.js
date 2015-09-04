@@ -9,6 +9,12 @@ angular.module('kodkollektivet', [
     'ct.ui.router.extras'
 ])
 
+    .run(function($state, $rootScope, $location) {
+        $rootScope.$state = $state;
+        $rootScope.$location = $location;
+    })
+
+
     .config(
     function ($locationProvider, $httpProvider, $resourceProvider, $stateProvider, $stickyStateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
 
@@ -28,40 +34,27 @@ angular.module('kodkollektivet', [
             requireBase: false
         });
 
+        $urlRouterProvider.otherwise("/");
+
         $stateProvider.state('app', {
-            url: '/',
-            templateUrl: "index.html",
+            url: '',
             views: {
                 'info': {
-                    templateUrl: 'templates/info.html',
-                    controller: 'InfoController'
-                },
-                'gh-view': {
-                    templateUrl: 'templates/gh-viewport.html',
-                    controller: 'InfoController'
-                }
-            }
-        });
-
-        $stateProvider.state('app.projects',{
-            url: '/projects',
-            sticky: true,
-            dsr: true,
-            views: {
-                'projects': {
-                    templateUrl: 'templates/projects.html'
+                    templateUrl: 'index.html'
                 }
             },
+            sticky: true,
+            dsr: true
+        });
+
+        $stateProvider.state('app.projects', {
+            url: '/projects',
+            templateUrl: 'templatest/projects.html'
         });
 
         $stateProvider.state('app.contributors', {
-            url: '/contributors',
-            sticky: true,
-            views: {
-                'contributors': {
-                    templateUrl: 'templates/contributors.html'
-                }
-            }
+            url: '/contrib',
+            templateUrl: 'templates/contributors.html'
         });
 
         $stickyStateProvider.enableDebug(true);
