@@ -1,5 +1,8 @@
 
-<a ui-sref=".list">State 1</a>
-<div ng-repeat="project in projects">
-    {{ project.name }}
+<a ui-sref="projects.list">State 1</a>
+
+<div ui-view>
+    <div ng-repeat="project in projects">
+        {{ project.name }}
+    </div>
 </div>

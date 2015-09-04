@@ -25,24 +25,35 @@ angular.module('kodkollektivet', [
 
         //$locationProvider.html5Mode(true).hashPrefix('!');
 
-        $urlRouterProvider.otherwise("/");
+        //$urlRouterProvider.otherwise("/");
 
         $stateProvider
-            .state('index', {
-                url: "/",
+
+            .state('app', {
+                url: '',
+                templateUrl: "index.html",
                 views: {
-                    "info": {
-                        templateUrl: "templates/info.html",
+                    'info': {
+                        templateUrl: 'templates/info.html',
                         controller: 'InfoController'
                     },
-                    'projects':{
-                        templateUrl : 'templates/projects.html',
+                    'projects': {
+                        templateUrl: 'templates/projects.html',
                         controller: 'ProjectController'
-                    },
-                    'projects@list': {
-                        templateUrl: 'templates/projects.list.html',
                     }
                 }
             })
 
-    });
+
+            .state('projects',{
+                url: '',
+                templateUrl: "templates/projects.html",
+                controller: 'ProjectController'
+            })
+
+            .state('projects.list',{
+                url: '/list',
+                templateUrl: 'templates/projects.list.html',
+            })
+        });
+
