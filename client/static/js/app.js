@@ -33,7 +33,10 @@ angular.module('kodkollektivet', [
                         templateUrl: "templates/info.html",
                         controller: 'InfoController'
                     },
-
+                    "projects": {
+                        templateUrl: "templates/projects.html",
+                        controller: 'ProjectController'
+                    },
                 }
             });
 
