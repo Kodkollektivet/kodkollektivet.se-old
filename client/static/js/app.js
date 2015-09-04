@@ -10,7 +10,7 @@ angular.module('kodkollektivet', [
 ])
 
     .config(
-    function ($httpProvider, $resourceProvider, $stateProvider, $stickyStateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
+    function ($locationProvider, $httpProvider, $resourceProvider, $stateProvider, $stickyStateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
 
         // This only works in angular 3!
         // It makes dealing with Django slashes at the end of everything easier.
@@ -23,11 +23,10 @@ angular.module('kodkollektivet', [
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
-        //$urlRouterProvider.otherwise("/");
-
-        //$locationProvider.html5Mode(true).hashPrefix('!');
-
-        //$urlRouterProvider.otherwise("/");
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
 
         $stateProvider.state('app', {
             url: '/',
