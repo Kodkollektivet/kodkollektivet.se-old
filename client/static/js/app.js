@@ -46,7 +46,10 @@ angular.module('kodkollektivet', [
                 },
                 'gh-view': {
                     templateUrl: 'templates/gh-viewport.html',
-                    controller: 'InfoController'
+                },
+                'contact': {
+                    templateUrl: 'templates/contact.html',
+                    controller: 'ContactController'
                 }
             },
             dsr: true
