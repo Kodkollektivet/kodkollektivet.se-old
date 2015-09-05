@@ -6,9 +6,7 @@ angular.module('kodkollektivet.controllers', [])
         });
     })
 
-    .controller('ProjectController', function($scope, $state, $stateParams, Project, Contributor, ProCon){
-
-        $scope.currentDetail = "";
+    .controller('ProjectController', function($scope, $state, $stateParams, Project, Contributor, ProCon, SharedData){
 
         Project.query(function(response){
             $scope.projects = response;
@@ -22,34 +20,41 @@ angular.module('kodkollektivet.controllers', [])
             $scope.procon = response;
         });
 
-        $scope.goToDetails = function(slug) {
 
-            console.log(slug);
-            $scope.currentDetail = slug;
-            $state.go("^.details", {projectSlug:slug});
+
+        $scope.goToDetails = function(project) {
+            SharedData.setProject(project);
+            $state.go("^.details", {projectSlug:project.slug});
         };
 
     })
 
-.controller('ContactController', function($scope, Contact){
+    .controller('DetailProjectController', function ($scope, $state, Project, SharedData) {
 
-    $scope.contact = {};
-    $scope.contact.name = '';
-    $scope.contact.email = '';
-    $scope.contact.tel = '';
-    $scope.contact.text = '';
+        var selectedProject = SharedData.getProject();
 
-    $scope.submitContactForm = function(){
-        Contact.save($scope.contact,
-            function(data){
-                //success callback
-                alert('Thank you!\nWe contact you soon!\nBest regards\n\t\t / Kodkollektivet')
+        $scope.projectSlug = selectedProject.slug;
+    })
 
-            },
-            function(err){
-                // error callback
-                //console.log(err.status);
-            }
-        );
-    };
-});
+    .controller('ContactController', function($scope, Contact){
+
+        $scope.contact = {};
+        $scope.contact.name = '';
+        $scope.contact.email = '';
+        $scope.contact.tel = '';
+        $scope.contact.text = '';
+
+        $scope.submitContactForm = function(){
+            Contact.save($scope.contact,
+                function(data){
+                    //success callback
+                    alert('Thank you!\nWe contact you soon!\nBest regards\n\t\t / Kodkollektivet')
+
+                },
+                function(err){
+                    // error callback
+                    //console.log(err.status);
+                }
+            );
+        };
+    });

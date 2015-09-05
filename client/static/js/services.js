@@ -28,6 +28,19 @@ angular.module('kodkollektivet.services', [])
                 }
             }
         });
+    })
+
+    .factory('SharedData', function() {
+        var selectedProject = {};
+
+        return {
+            setProject: function(project){
+                selectedProject = project;
+            },
+            getProject: function(){
+                return selectedProject;
+            }
+        };
     });
 
 
