@@ -7,10 +7,12 @@ from .serializers import ProjectSerializer, ContributorSerializer, ProConSeriali
 class ProjectViewset(viewsets.ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    lookup_field = 'slug'
 
 class ContributorViewset(viewsets.ModelViewSet):
     queryset = Contributor.objects.all()
     serializer_class = ContributorSerializer
+    lookup_field = 'gh_login'
 
 class ProConViewset(viewsets.ModelViewSet):
     queryset = ProCon.objects.all()
