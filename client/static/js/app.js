@@ -6,7 +6,9 @@ angular.module('kodkollektivet', [
     'uiGmapgoogle-maps',
     'kodkollektivet.controllers',
     'kodkollektivet.services',
-    'ct.ui.router.extras'
+    'ct.ui.router.extras',
+    'ngSanitize',
+    'btford.markdown'
 ])
 
     .run(function($state, $rootScope, $location) {
@@ -17,7 +19,8 @@ angular.module('kodkollektivet', [
             $('#fullpage').fullpage({
                 scrollBar: true,
                 anchors:['home', 'information', 'procon', 'contactus'],
-                navigation: true
+                navigation: true,
+                controlArrows: false
             });
         });
     })
@@ -62,7 +65,7 @@ angular.module('kodkollektivet', [
                     },
                     'contributors': {
                         templateUrl: 'templates/contributors.html',
-                        controller: 'ProjectController'
+                        controller: 'ContributorController'
                     }
                 },
                 dsr: true,

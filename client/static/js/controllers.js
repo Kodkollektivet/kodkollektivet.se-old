@@ -6,7 +6,7 @@ angular.module('kodkollektivet.controllers', [])
         });
     })
 
-    .controller('ProjectController', function($scope, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData){
+    .controller('ProjectController', function($scope, $http, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData){
 
         $scope.showDetailed = false;
 
@@ -19,16 +19,26 @@ angular.module('kodkollektivet.controllers', [])
         });
 
         ProCon.query(function(response){
-            $scope.procon = response;
+            $scope.procons = response;
         });
 
         $scope.slide = function() {
             $.fn.fullpage.moveSlideRight();
         };
 
-        $scope.goToDetails = function(project) {
-            SharedData.setProject(project);
-            $scope.projectSlug = project.slug;
+        $scope.goToDetails = function(procon) {
+            SharedData.setProject(procon);
+            $scope.projectSlug = procon.project;
+            $scope.projectOwner = procon.contributor;
+
+            $http.get("https://api.github.com/repos/" +
+                procon.contributor + "/" + procon.project + "/contributors")
+                .success(function(response){$scope.repoDetails = response;});
+
+            $http.get("https://api.github.com/repos/" +
+                procon.contributor + "/" + procon.project + "/readme")
+                .success(function(response){$scope.repoReadme = atob(response.content);});
+
             $scope.showDetailed = true;
         };
 
@@ -43,6 +53,13 @@ angular.module('kodkollektivet.controllers', [])
         var selectedProject = SharedData.getProject();
 
         $scope.projectSlug = selectedProject.slug;
+    })
+
+    .controller('ContributorController', function ($scope, $http, SharedData) {
+
+        $scope.slide = function() {
+            $.fn.fullpage.moveSlideRight();
+        };
     })
 
     .controller('ContactController', function($scope, Contact){

@@ -1,8 +1,15 @@
-<div class="well">
-    <button class="btn btn-block" ng-click="leaveDetails()">Back</button>
-    <div align="center">
-        <h1>{{ projectSlug }}</h1>
-        
+<button class="btn" ng-click="leaveDetails()">Back</button>
+<div>
+    <h3>"{{ projectSlug }}", by {{ projectOwner }}</h3>
 
+    <div class="well">
+        <div btf-markdown="repoReadme"></div>
     </div>
+
+    <h4>Top Contributors</h4>
+    <ol>
+        <li ng-repeat="usr in repoDetails">
+            <p>{{ usr.login }}: {{ usr.contributions }} contributions</p>
+        </li>
+    </ol>
 </div>
