@@ -15,7 +15,7 @@ angular.module('kodkollektivet', [
 
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                
+                scrollBar: true
             });
         });
     })
