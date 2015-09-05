@@ -43,29 +43,30 @@ angular.module('kodkollektivet', [
             requireBase: true
         });
 
-
-        $stateProvider.state('app', {
-            url: '/',
-            templateUrl: "index.html",
-            views: {
-                'info': {
-                    templateUrl: 'templates/info.html',
-                    controller: 'InfoController'
+        $stateProvider
+            .state('app', {
+                url: '/',
+                templateUrl: "index.html",
+                views: {
+                    'info': {
+                        templateUrl: 'templates/info.html',
+                        controller: 'InfoController'
+                    },
+                    'projects': {
+                        templateUrl: 'templates/projects.html',
+                        controller: 'ProjectController'
+                    },
+                    'contact': {
+                        templateUrl: 'templates/contact.html',
+                        controller: 'ContactController'
+                    },
+                    'contributors': {
+                        templateUrl: 'templates/contributors.html',
+                        controller: 'ProjectController'
+                    }
                 },
-                'gh-view': {
-                    templateUrl: 'templates/gh-viewport.html',
-                    controller: 'ProjectController'
-                },
-                'contact': {
-                    templateUrl: 'templates/contact.html',
-                    controller: 'ContactController'
-                },
-                'contributors': {
-                    templateUrl: 'templates/contributors.html',
-                    controller: 'ProjectController'
-                }
-
-            }
+                dsr: true,
+                sticky: true
         });
 
         /*$stateProvider.state('app.projects', {
@@ -76,7 +77,7 @@ angular.module('kodkollektivet', [
         });*/
 
         $stateProvider.state('app.details', {
-            url: 'projects/detail/{projectSlug}',
+            url: '{projectSlug}',
             templateUrl: 'templates/project-details.html',
             controller: 'DetailProjectController'
         });

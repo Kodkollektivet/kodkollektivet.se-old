@@ -6,7 +6,9 @@ angular.module('kodkollektivet.controllers', [])
         });
     })
 
-    .controller('ProjectController', function($scope, $state, $stateParams, Project, Contributor, ProCon, SharedData){
+    .controller('ProjectController', function($scope, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData){
+
+        $scope.showDetailed = false;
 
         Project.query(function(response){
             $scope.projects = response;
@@ -26,7 +28,12 @@ angular.module('kodkollektivet.controllers', [])
 
         $scope.goToDetails = function(project) {
             SharedData.setProject(project);
-            $state.go(".details", {projectSlug:project.slug});
+            $scope.projectSlug = project.slug;
+            $scope.showDetailed = true;
+        };
+
+        $scope.leaveDetails = function() {
+            $scope.showDetailed = false;
         };
 
     })

@@ -1,6 +1,16 @@
- <div class="well" ng-repeat="project in projects">
+<div>
+    <h1>Projects</h1>
+    <button class="btn btn-large" ng-click="slide()">Contributors</button>
+    <div class="well" ng-show="showDetailed === false" ng-repeat="project in projects">
         <div align="center">
             <h3>{{ project.slug }}</h3>
             <button class="btn btn-block" ng-click="goToDetails(project)">Details</button>
         </div>
- </div>
+    </div>
+
+    <div class="well" ng-show="showDetailed === true" ng-include="'templates/project-details.html'">
+
+    </div>
+
+    <div ui-view></div>
+</div>
