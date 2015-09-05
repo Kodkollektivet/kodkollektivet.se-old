@@ -1,11 +1,11 @@
 <div>
-    <h1>GH</h1>
-    <ul class="app">
-        <li ui-sref=".projects" ui-sref-active="selected">Projects</li>
-        <li ui-sref=".contributors"  ui-sref-active="selected">Contributors</li>
-    </ul>
-
-    <div ng-show="$state.includes('app.projects')" ui-view="projects"></div>
-    <div ng-show="$state.includes('app.contributors')"  ui-view="contributors"></div>
+    <h1>Projects</h1>
+    <button class="btn btn-large" ng-click="slide()">Contributors</button>
+    <div class="well" ng-repeat="project in projects">
+        <div align="center">
+            <h3>{{ project.slug }}</h3>
+            <button class="btn btn-block" ng-click="goToDetails(project)">Details</button>
+        </div>
+    </div>
     <div ui-view></div>
 </div>

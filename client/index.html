@@ -41,13 +41,13 @@
     <script src="static/js/services.js"></script>
 
     <title>Kodkollektivet</title>
-
+    <base href="/#home">
 </head>
 <body ng-app="kodkollektivet">
 
 <div id="fullpage">
     <!-- Top of the page / Kodkollektivet -->
-    <div class="parallax-window section" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
+    <div class="parallax-window section" data-anchor="home" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
         <div class="topContainer">
             <div class="headingtext animated fadeInDownBig">
                 Kodkollektivet
@@ -56,17 +56,22 @@
     </div>
 
 
-    <div class="page section">
+    <div class="page section" data-anchor="information">
         <div class="container pageContent" id="infoAnchor" ui-view="info"></div>
     </div>
 
-    <div class="page section">
-        <div class="container pageContent" ui-view="gh-view"></div>
+    <div class="page section" data-anchor="procon">
+        <div class="slide">
+            <div class="container pageContent" ui-view="gh-view"></div>
+        </div>
+        <div class="slide">
+            <div class="container pageContent" ui-view="contributors"></div>
+        </div>
     </div>
 
 
     <!-- Contact -->
-    <div class="page section">
+    <div class="page section" data-anchor="contactus">
         <div class="container pageContent" ui-view="contact"></div>
     </div>
     <!-- Contact End -->

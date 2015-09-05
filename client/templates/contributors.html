@@ -1,1 +1,11 @@
-<h1>Contrib State</h1>
+<div>
+    <h1>Contributors</h1>
+    <button class="btn btn-large" ng-click="slide()">Projects</button>
+    <div class="well" ng-repeat="contributor in contributors">
+        <div align="center">
+            <h3>{{ contributor.name }}</h3>
+            <p>{{ contributor.gh_url }}</p>
+        </div>
+    </div>
+    <div ui-view></div>
+</div>

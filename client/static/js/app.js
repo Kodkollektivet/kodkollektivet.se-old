@@ -10,12 +10,14 @@ angular.module('kodkollektivet', [
 ])
 
     .run(function($state, $rootScope, $location) {
-        $rootScope.$state = $state;
-        $rootScope.$location = $location;
+        //$rootScope.$state = $state;
+        //$rootScope.$location = $location;
 
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                scrollBar: true
+                scrollBar: true,
+                anchors:['home', 'information', 'procon', 'contactus'],
+                navigation: true
             });
         });
     })
@@ -35,11 +37,11 @@ angular.module('kodkollektivet', [
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
+
         $locationProvider.html5Mode({
             enabled: true,
-            requireBase: false
+            requireBase: true
         });
-
 
 
         $stateProvider.state('app', {
@@ -52,32 +54,37 @@ angular.module('kodkollektivet', [
                 },
                 'gh-view': {
                     templateUrl: 'templates/gh-viewport.html',
+                    controller: 'ProjectController'
                 },
                 'contact': {
                     templateUrl: 'templates/contact.html',
                     controller: 'ContactController'
+                },
+                'contributors': {
+                    templateUrl: 'templates/contributors.html',
+                    controller: 'ProjectController'
                 }
-            },
-            dsr: true
+
+            }
         });
 
-        $stateProvider.state('app.projects', {
+        /*$stateProvider.state('app.projects', {
             url: 'projects',
             templateUrl: 'templates/projects.html',
             controller: 'ProjectController',
             dsr: true
-        });
+        });*/
 
         $stateProvider.state('app.details', {
-            url: 'details/{projectSlug}',
+            url: 'projects/detail/{projectSlug}',
             templateUrl: 'templates/project-details.html',
             controller: 'DetailProjectController'
         });
 
-        $stateProvider.state('app.contributors', {
+        /*$stateProvider.state('app.contributors', {
             url: 'contributors',
             templateUrl: 'templates/contributors.html'
-        });
+        });*/
 
         $stickyStateProvider.enableDebug(true);
     });

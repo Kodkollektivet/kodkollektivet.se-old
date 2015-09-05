@@ -20,11 +20,13 @@ angular.module('kodkollektivet.controllers', [])
             $scope.procon = response;
         });
 
-
+        $scope.slide = function() {
+            $.fn.fullpage.moveSlideRight();
+        };
 
         $scope.goToDetails = function(project) {
             SharedData.setProject(project);
-            $state.go("^.details", {projectSlug:project.slug});
+            $state.go(".details", {projectSlug:project.slug});
         };
 
     })
