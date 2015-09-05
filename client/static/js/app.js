@@ -12,6 +12,12 @@ angular.module('kodkollektivet', [
     .run(function($state, $rootScope, $location) {
         $rootScope.$state = $state;
         $rootScope.$location = $location;
+
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                
+            });
+        });
     })
 
 

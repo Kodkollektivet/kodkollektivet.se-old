@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/lib/angular-aside.min.css">
     <link rel="stylesheet" href="static/css/lib/animate.css">
+    <link rel="stylesheet" href="static/css/lib/jquery.fullPage.css">
     <link rel="stylesheet" href="static/css/kodkollektivet.css">
 
     <!-- Fonts -->
@@ -29,6 +30,7 @@
     <script src="static/js/lib/parallax.min.js"></script>
 
     <script src="static/js/lib/angular-aside.min.js"></script>
+    <script src="static/js/lib/jquery.fullPage.min.js"></script>
 
     <script src="static/js/lib/lodash.min.js"></script>
     <script src="static/js/lib/angular-google-maps.min.js"></script>
@@ -43,33 +45,32 @@
 </head>
 <body ng-app="kodkollektivet">
 
-
-<!-- Top of the page / Kodkollektivet -->
-<div class="parallax-window" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
-    <div class="topContainer">
-        <div class="headingtext animated fadeInDownBig">
-            Kodkollektivet
+<div id="fullpage">
+    <!-- Top of the page / Kodkollektivet -->
+    <div class="parallax-window section" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
+        <div class="topContainer">
+            <div class="headingtext animated fadeInDownBig">
+                Kodkollektivet
+            </div>
         </div>
     </div>
+
+
+    <div class="page section">
+        <div class="container pageContent" id="infoAnchor" ui-view="info"></div>
+    </div>
+
+    <div class="page section">
+        <div class="container pageContent" ui-view="gh-view"></div>
+    </div>
+
+
+    <!-- Contact -->
+    <div class="page section">
+        <div class="container pageContent" ui-view="contact"></div>
+    </div>
+    <!-- Contact End -->
 </div>
-
-
-<div class="infoContainerDiv">
-    <div class="container infoContainer" id="infoAnchor" ui-view="info"></div>
-</div>
-
-<div class="projectsContainerDiv">
-    <div class="container projectsContainer" ui-view="gh-view"></div>
-</div>
-
-
-<!-- Contact -->
-<div class="contactContainerDiv">
-    <div class="container contactContainer" ui-view="contact"></div>
-</div>
-<!-- Contact End -->
-
-
 
 </body>
 </html>
