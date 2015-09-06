@@ -51,11 +51,14 @@ angular.module('kodkollektivet.controllers', [])
     .controller('DetailProjectController', function ($scope, $state, Project, SharedData) {
 
         var selectedProject = SharedData.getProject();
-
         $scope.projectSlug = selectedProject.slug;
     })
 
-    .controller('ContributorController', function ($scope, $http, SharedData) {
+    .controller('ContributorController', function ($scope, $http, Contributor, SharedData) {
+
+        Contributor.query(function(response){
+            $scope.contributors = response;
+        });
 
         $scope.slide = function() {
             $.fn.fullpage.moveSlideRight();

@@ -1,8 +1,9 @@
 <div>
-    <h1>Contributors</h1>
+
     <button class="btn btn-large" ng-click="slide()">Projects</button>
-    <div class="well" ng-repeat="contributor in contributors">
-        <div align="center">
+    <div class="well">
+        <h2>Contributors</h2>
+        <div align="center" ng-repeat="contributor in contributors">
             <h3>{{ contributor.name }}</h3>
             <p>{{ contributor.gh_url }}</p>
         </div>
