@@ -6,7 +6,9 @@ angular.module('kodkollektivet.controllers', [])
         });
     })
 
-    .controller('ProjectController', function($scope, $state, $stateParams, Project, Contributor, ProCon, SharedData){
+    .controller('ProjectController', function($scope, $http, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData){
+
+        $scope.showDetailed = false;
 
         Project.query(function(response){
             $scope.projects = response;
@@ -17,14 +19,31 @@ angular.module('kodkollektivet.controllers', [])
         });
 
         ProCon.query(function(response){
-            $scope.procon = response;
+            $scope.procons = response;
         });
 
+        $scope.slide = function() {
+            $.fn.fullpage.moveSlideRight();
+        };
 
+        $scope.goToDetails = function(procon) {
+            SharedData.setProject(procon);
+            $scope.projectSlug = procon.project;
+            $scope.projectOwner = procon.contributor;
 
-        $scope.goToDetails = function(project) {
-            SharedData.setProject(project);
-            $state.go("^.details", {projectSlug:project.slug});
+            $http.get("https://api.github.com/repos/" +
+                procon.contributor + "/" + procon.project + "/contributors")
+                .success(function(response){$scope.repoDetails = response;});
+
+            $http.get("https://api.github.com/repos/" +
+                procon.contributor + "/" + procon.project + "/readme")
+                .success(function(response){$scope.repoReadme = atob(response.content);});
+
+            $scope.showDetailed = true;
+        };
+
+        $scope.leaveDetails = function() {
+            $scope.showDetailed = false;
         };
 
     })
@@ -32,8 +51,18 @@ angular.module('kodkollektivet.controllers', [])
     .controller('DetailProjectController', function ($scope, $state, Project, SharedData) {
 
         var selectedProject = SharedData.getProject();
-
         $scope.projectSlug = selectedProject.slug;
+    })
+
+    .controller('ContributorController', function ($scope, $http, Contributor, SharedData) {
+
+        Contributor.query(function(response){
+            $scope.contributors = response;
+        });
+
+        $scope.slide = function() {
+            $.fn.fullpage.moveSlideRight();
+        };
     })
 
     .controller('ContactController', function($scope, Contact){

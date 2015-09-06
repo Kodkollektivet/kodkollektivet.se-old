@@ -6,20 +6,32 @@ angular.module('kodkollektivet', [
     'uiGmapgoogle-maps',
     'kodkollektivet.controllers',
     'kodkollektivet.services',
-    'ct.ui.router.extras'
+    'ct.ui.router.extras',
+    'ngSanitize',
+    'btford.markdown'
 ])
 
     .run(function($state, $rootScope, $location) {
-        $rootScope.$state = $state;
-        $rootScope.$location = $location;
+        //$rootScope.$state = $state;
+        //$rootScope.$location = $location;
 
         $(document).ready(function() {
             $('#fullpage').fullpage({
-                scrollBar: true
+                scrollBar: true,
+                anchors:['home', 'information', 'procon', 'contactus'],
+                navigation: true,
+                controlArrows: false
             });
         });
     })
 
+    .config(['markdownConverterProvider', function (markdownConverterProvider) {
+        // options to be passed to Showdown
+        // see: https://github.com/coreyti/showdown#extensions
+        markdownConverterProvider.config({
+            extensions: ['github']
+        });
+    }])
 
     .config(
     function ($locationProvider, $httpProvider, $resourceProvider, $stateProvider, $stickyStateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
@@ -35,49 +47,55 @@ angular.module('kodkollektivet', [
         $httpProvider.defaults.xsrfCookieName = 'csrftoken';
         $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 
+
         $locationProvider.html5Mode({
             enabled: true,
-            requireBase: false
+            requireBase: true
         });
 
-
-
-        $stateProvider.state('app', {
-            url: '/',
-            templateUrl: "index.html",
-            views: {
-                'info': {
-                    templateUrl: 'templates/info.html',
-                    controller: 'InfoController'
+        $stateProvider
+            .state('app', {
+                url: '/',
+                templateUrl: "index.html",
+                views: {
+                    'info': {
+                        templateUrl: 'templates/info.html',
+                        controller: 'InfoController'
+                    },
+                    'projects': {
+                        templateUrl: 'templates/projects.html',
+                        controller: 'ProjectController'
+                    },
+                    'contact': {
+                        templateUrl: 'templates/contact.html',
+                        controller: 'ContactController'
+                    },
+                    'contributors': {
+                        templateUrl: 'templates/contributors.html',
+                        controller: 'ContributorController'
+                    }
                 },
-                'gh-view': {
-                    templateUrl: 'templates/gh-viewport.html',
-                },
-                'contact': {
-                    templateUrl: 'templates/contact.html',
-                    controller: 'ContactController'
-                }
-            },
-            dsr: true
+                dsr: true,
+                sticky: true
         });
 
-        $stateProvider.state('app.projects', {
+        /*$stateProvider.state('app.projects', {
             url: 'projects',
             templateUrl: 'templates/projects.html',
             controller: 'ProjectController',
             dsr: true
-        });
+        });*/
 
         $stateProvider.state('app.details', {
-            url: 'details/{projectSlug}',
+            url: '{projectSlug}',
             templateUrl: 'templates/project-details.html',
             controller: 'DetailProjectController'
         });
 
-        $stateProvider.state('app.contributors', {
+        /*$stateProvider.state('app.contributors', {
             url: 'contributors',
             templateUrl: 'templates/contributors.html'
-        });
+        });*/
 
         $stickyStateProvider.enableDebug(true);
     });

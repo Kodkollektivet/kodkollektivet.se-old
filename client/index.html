@@ -35,38 +35,50 @@
     <script src="static/js/lib/lodash.min.js"></script>
     <script src="static/js/lib/angular-google-maps.min.js"></script>
 
+    <script src="static/js/lib/angular-sanitize.min.js"></script>
+    <script src="static/js/lib/markdown.js"></script>
+    <script src="static/js/lib/Showdown.min.js"></script>
+    <script src="static/js/lib/github.js"></script>
 
     <script src="static/js/app.js"></script>
     <script src="static/js/controllers.js"></script>
     <script src="static/js/services.js"></script>
 
     <title>Kodkollektivet</title>
-
+    <base href="/#">
 </head>
 <body ng-app="kodkollektivet">
 
 <div id="fullpage">
-    <!-- Top of the page / Kodkollektivet -->
-    <div class="parallax-window section" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
+    <!-- Page Top / Home -->
+    <div class="parallax-window section" data-anchor="home" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
         <div class="topContainer">
             <div class="headingtext animated fadeInDownBig">
                 Kodkollektivet
             </div>
         </div>
     </div>
+    <!-- Page Top / Home End -->
 
-
-    <div class="page section">
+    <!-- Information -->
+    <div class="page section" data-anchor="information">
         <div class="container pageContent" id="infoAnchor" ui-view="info"></div>
     </div>
+    <!-- Information End -->
 
+    <!-- Project/Contributors -->
     <div class="page section">
-        <div class="container pageContent" ui-view="gh-view"></div>
+        <div class="slide" data-anchor="projs">
+            <div class="container pageContent" ui-view="projects"></div>
+        </div>
+        <div class="slide" data-anchor="conts">
+            <div class="container pageContent" ui-view="contributors"></div>
+        </div>
     </div>
-
+    <!-- Project/Contributors End -->
 
     <!-- Contact -->
-    <div class="page section">
+    <div class="page section" data-anchor="contactus">
         <div class="container pageContent" ui-view="contact"></div>
     </div>
     <!-- Contact End -->
