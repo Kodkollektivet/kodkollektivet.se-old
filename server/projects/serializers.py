@@ -1,7 +1,7 @@
 
 from rest_framework import serializers
 
-from .models import Project, Contributor, ProCon
+from .models import Project, Contributor, Language, ProCon, ProLan
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -15,6 +15,20 @@ class ContributorSerializer(serializers.ModelSerializer):
         model = Contributor
         fields = ('name', 'email', 'website', 'about', 'gh_login', 'gh_url')
         lookup_fields = 'gh_login'
+
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Language
+        fields = ('name',)
+        lookup_fields = 'name'
+
+class ProLanSerializer(serializers.ModelSerializer):
+    project = serializers.SlugRelatedField(read_only=True, slug_field='slug')
+    language = serializers.SlugRelatedField(read_only=True, slug_field='name')
+
+    class Meta:
+        model = ProLan
+        fields = ('project', 'language')
 
 class ProConSerializer(serializers.ModelSerializer):
 

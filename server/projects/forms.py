@@ -11,4 +11,4 @@ class ProjectForm(ModelForm):
 class ContributorForm(ModelForm):
     class Meta:
         model = Contributor
-        fields = ('gh_login', 'gh_url')
+        fields = ('gh_login', 'gh_url', 'gh_id')
