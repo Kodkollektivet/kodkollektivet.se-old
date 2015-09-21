@@ -1,15 +1,19 @@
 angular.module('kodkollektivet.services', [])
 
     .factory('Info', function($resource) {
-        return $resource('http://127.0.0.1:8000/info/');
+        return $resource('http://api.kodkollektivet.se/info/');
     })
 
     .factory('Project', function($resource){
-        return $resource('http://127.0.0.1:8000/project/');
+        return $resource('http://api.kodkollektivet.se/project/');
     })
 
     .factory('Contributor', function($resource){
-        return $resource('http://127.0.0.1:8000/contributor/');
+        return $resource('http://api.kodkollektivet.se/contributor/');
+    })
+
+    .factory('Language', function($resource){
+        return $resource('http://api.kodkollektivet.se/language/');
     })
 
     .factory('GhContributor', function($resource) {
@@ -17,11 +21,15 @@ angular.module('kodkollektivet.services', [])
     })
 
     .factory('ProCon', function($resource){
-        return $resource('http://127.0.0.1:8000/procon/');
+        return $resource('http://api.kodkollektivet.se/procon/');
+    })
+
+    .factory('ProLan', function($resource){
+        return $resource('http://api.kodkollektivet.se/prolan/');
     })
 
     .factory('Contact', function($resource) {
-        return $resource('http://127.0.0.1:8000/contact/', {}, {
+        return $resource('http://api.kodkollektivet.se/contact/', {}, {
             'save': {
                 method: 'POST',
                 transformRequest: function(obj) {

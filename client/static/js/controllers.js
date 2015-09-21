@@ -6,7 +6,7 @@ angular.module('kodkollektivet.controllers', [])
         });
     })
 
-    .controller('ProjectController', function($scope, $http, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData){
+    .controller('ProjectController', function($scope, $sce, $http, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData, Language, ProLan){
 
         $scope.showDetailed = false;
 
@@ -22,23 +22,23 @@ angular.module('kodkollektivet.controllers', [])
             $scope.procons = response;
         });
 
+        Language.query(function (response) {
+            $scope.languages = response;
+        });
+
+        ProLan.query(function(response){
+            $scope.prolans = response;
+        });
+
         $scope.slide = function() {
             $.fn.fullpage.moveSlideRight();
         };
 
-        $scope.goToDetails = function(procon) {
-            SharedData.setProject(procon);
-            $scope.projectSlug = procon.project;
-            $scope.projectOwner = procon.contributor;
-
-            $http.get("https://api.github.com/repos/" +
-                procon.contributor + "/" + procon.project + "/contributors")
-                .success(function(response){$scope.repoDetails = response;});
-
-            $http.get("https://api.github.com/repos/" +
-                procon.contributor + "/" + procon.project + "/readme")
-                .success(function(response){$scope.repoReadme = atob(response.content);});
-
+        $scope.goToDetails = function(project) {
+            SharedData.setProject(project);
+            $scope.project = project;
+            $scope.projectSlug = project.slug;
+            $scope.info = $sce.trustAsHtml(project.about);
             $scope.showDetailed = true;
         };
 

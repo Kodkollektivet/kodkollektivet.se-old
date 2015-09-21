@@ -1,11 +1,14 @@
 <div>
-    <button class="btn btn-large" ng-click="slide()">Contributors</button>
-    <div class="well" ng-show="showDetailed === false">
-        <h2>Projects</h2>
-        <div align="center" ng-repeat="procon in procons">
-            <h3>{{ procon.project }}</h3>
-            <h5>{{ procon.contributor }}</h5>
-            <button class="btn btn-block" ng-click="goToDetails(procon)">Details</button>
+    <div ng-show="showDetailed === false">
+
+        <div align="center">
+            <h2>Projects</h2>
+        </div>
+
+        <div class="well" align="center" ng-repeat="project in projects">
+            <h3>{{ project.name }}</h3>
+            <h5 ng-repeat="prolan in prolans | filter:project.name:true">{{ prolan.language }}</h5>
+            <button class="btn btn-block" ng-click="goToDetails(project)">Details</button>
         </div>
     </div>
 

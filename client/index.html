@@ -49,25 +49,27 @@
 </head>
 <body ng-app="kodkollektivet">
 
-<div id="fullpage">
+
     <!-- Page Top / Home -->
-    <div class="parallax-window section" data-anchor="home" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
+    <div class="parallax-window" data-anchor="home" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
         <div class="topContainer">
             <div class="headingtext animated fadeInDownBig">
-                Kodkollektivet
+                <h1>
+                    Kodkollektivet
+                </h1>
             </div>
         </div>
     </div>
     <!-- Page Top / Home End -->
 
     <!-- Information -->
-    <div class="page section" data-anchor="information">
+    <div class="page" data-anchor="information">
         <div class="container pageContent" id="infoAnchor" ui-view="info"></div>
     </div>
     <!-- Information End -->
 
     <!-- Project/Contributors -->
-    <div class="page section">
+    <div class="page">
         <div class="slide" data-anchor="projs">
             <div class="container pageContent" ui-view="projects"></div>
         </div>
@@ -78,11 +80,11 @@
     <!-- Project/Contributors End -->
 
     <!-- Contact -->
-    <div class="page section" data-anchor="contactus">
+    <div class="page" data-anchor="contactus">
         <div class="container pageContent" ui-view="contact"></div>
     </div>
     <!-- Contact End -->
-</div>
+
 
 </body>
 </html>
