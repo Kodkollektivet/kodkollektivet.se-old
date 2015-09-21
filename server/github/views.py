@@ -16,7 +16,7 @@ def get_repos():
     This function collects all the repos from
     GitHub and store them in the database
     """
-    projects = requests.get('https://api.github.com/orgs/videumcodeup/repos').json()
+    projects = requests.get('https://api.github.com/orgs/kodkollektivet/repos').json()
 
     for project in projects:
 
@@ -29,7 +29,7 @@ def get_repos():
         if form.is_valid():
             pro, created = Project.objects.get_or_create(**form.data)
 
-            languages = requests.get('https://api.github.com/repos/videumcodeup/'+project['name']+'/languages').json()
+            languages = requests.get('https://api.github.com/orgs/kodkollektivet/repos'+project['name']+'/languages').json()
 
             for key, value in languages.iteritems():
                 print(key)
@@ -49,7 +49,7 @@ def get_contribs():
 
     for project in projects:
 
-        request = requests.get('https://api.github.com/repos/videumcodeup/'+project.gh_name+'/contributors').json()
+        request = requests.get('https://api.github.com/orgs/kodkollektivet/repos'+project.gh_name+'/contributors').json()
 
         for data in request:
             try:
@@ -64,7 +64,7 @@ def get_procon():
     projects = Project.objects.all()
 
     for project in projects:
-        request = requests.get('https://api.github.com/repos/videumcodeup/'+project.gh_name+'/contributors').json()
+        request = requests.get('https://api.github.com/orgs/kodkollektivet/repos'+project.gh_name+'/contributors').json()
 
         for data in request:
 
