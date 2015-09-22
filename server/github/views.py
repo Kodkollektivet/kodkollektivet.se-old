@@ -44,12 +44,11 @@ def get_contribs():
     Project <-> Contributor
     """
 
-    projects = Project.objects.all()
+    projects = Project.objects.all()  # Get all projects
 
-    for project in projects:
+    for project in projects:  # iterate over them
 
-        if len(project.gh_name) > 0:  # If it is a github project
-            print(project.gh_name)
+        if (len(project.gh_name) > 2) or (project.gh_id is not None):  # go in here if gh_name or gh_id
 
             request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
@@ -67,7 +66,7 @@ def get_procon():
 
     for project in projects:
 
-        if len(project.gh_name) > 0:  # If it is a github project
+        if (len(project.gh_name) > 2) or (project.gh_id is not None):  # If it is a github project
             request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
             for data in request:
