@@ -10,3 +10,4 @@ setproctitle
 django-admin-bootstrapped
 django-bootstrap3
 requests
+sendgrid-django
