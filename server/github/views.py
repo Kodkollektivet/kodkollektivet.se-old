@@ -32,7 +32,6 @@ def get_repos():
             languages = requests.get('https://api.github.com/repos/kodkollektivet/'+project['name']+'/languages').json()
 
             for key, value in languages.iteritems():
-                print(key)
                 lan, created = Language.objects.get_or_create(name=key)
                 obj, created = ProLan.objects.get_or_create(project=pro, language=lan)
 
@@ -49,14 +48,17 @@ def get_contribs():
 
     for project in projects:
 
-        request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
+        if len(project.gh_name) > 0:  # If it is a github project
+            print(project.gh_name)
 
-        for data in request:
-            try:
-                Contributor.objects.get(gh_id=data['id'])
+            request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
-            except ObjectDoesNotExist as e:
-                Contributor(gh_login=data['login'], gh_url=data['url'], gh_id=data['id']).save()
+            for data in request:
+                try:
+                    Contributor.objects.get(gh_id=data['id'])
+
+                except ObjectDoesNotExist as e:
+                    Contributor(gh_login=data['login'], gh_url=data['url'], gh_id=data['id']).save()
 
 
 def get_procon():
@@ -64,12 +66,14 @@ def get_procon():
     projects = Project.objects.all()
 
     for project in projects:
-        request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
-        for data in request:
+        if len(project.gh_name) > 0:  # If it is a github project
+            request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
-            contributor = Contributor.objects.get(gh_id=data['id'])
-            ProCon.objects.get_or_create(contributor=contributor, project=project)
+            for data in request:
+
+                contributor = Contributor.objects.get(gh_id=data['id'])
+                ProCon.objects.get_or_create(contributor=contributor, project=project)
 
 
 
