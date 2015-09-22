@@ -10,8 +10,8 @@ class Project(models.Model):
     about = models.TextField(blank=True)
 
     # Github specific
-    gh_name = models.CharField(max_length=254)
-    gh_id = models.IntegerField()
+    gh_name = models.CharField(max_length=254, blank=True)
+    gh_id = models.IntegerField(blank=True)
     gh_url = models.CharField(max_length=254, blank=True)
 
     def save(self, *args, **kwargs):
@@ -28,7 +28,7 @@ class Project(models.Model):
         super(Project, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.gh_name
+        return self.name
 
 
 class Contributor(models.Model):
