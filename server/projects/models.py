@@ -11,7 +11,7 @@ class Project(models.Model):
 
     # Github specific
     gh_name = models.CharField(max_length=254, blank=True)
-    gh_id = models.IntegerField(blank=True)
+    gh_id = models.IntegerField(blank=True, null=True)
     gh_url = models.CharField(max_length=254, blank=True)
 
     def save(self, *args, **kwargs):
@@ -65,8 +65,8 @@ class ProCon(models.Model):
     project = models.ForeignKey(Project)
     contributor = models.ForeignKey(Contributor)
 
-    class Meta:
-        unique_together = (('project', 'contributor'),)
+    #class Meta:
+        #unique_together = (('project', 'contributor'),)
 
     def __unicode__(self):
         return self.contributor.gh_login + ' < - > ' + self.project.gh_name
