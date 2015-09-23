@@ -4,7 +4,7 @@
     </div>
     <div align="center" ng-repeat="contributor in contributors">
         <h3>{{ contributor.name }}</h3>
-        <a href="{{ contributor.gh_url }}" target="_blank">
+        <a href="{{ contributor.gh_html }}" target="_blank">
             <h5>GitHub</h5>
         </a>
         <a href="{{ contributor.website }}" target="_blank" ng-show="contributor.website.length > 0">
