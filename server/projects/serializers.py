@@ -13,7 +13,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 class ContributorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contributor
-        fields = ('name', 'email', 'website', 'about', 'gh_login', 'gh_url')
+        fields = ('name', 'email', 'website', 'about', 'gh_login', 'gh_url', 'gh_html')
         lookup_fields = 'gh_login'
 
 class LanguageSerializer(serializers.ModelSerializer):

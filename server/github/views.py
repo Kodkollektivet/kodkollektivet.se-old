@@ -57,7 +57,7 @@ def get_contribs():
                     Contributor.objects.get(gh_id=data['id'])
 
                 except ObjectDoesNotExist as e:
-                    Contributor(gh_login=data['login'], gh_url=data['url'], gh_id=data['id']).save()
+                    Contributor(gh_login=data['login'], gh_url=data['url'], gh_id=data['id'], gh_html=data['html_url']).save()
 
 
 def get_procon():
