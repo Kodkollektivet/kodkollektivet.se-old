@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-import models
+from .models import *
 
 
 class ProRolAdmin(admin.ModelAdmin):
