@@ -1,17 +1,15 @@
 import requests
 
-from django.core.exceptions import ObjectDoesNotExist
-
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 
 from projects.models import Project, Contributor, ProCon, ProLan, Language
-from projects.forms import ProjectForm, ContributorForm
+from projects.forms import ProjectForm
 
 
-def get_repos():
+def getrepos():
     """
     This function collects all the repos from
     GitHub and store them in the database
@@ -36,7 +34,7 @@ def get_repos():
                 obj, created = ProLan.objects.get_or_create(project=pro, language=lan)
 
 
-def get_contribs():
+def getcontribs():
     """
     This function get all the project objects from the database.
     Ask the GitHub API for the contributors in the project.
@@ -53,14 +51,15 @@ def get_contribs():
             request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
             for data in request:
-                try:
-                    Contributor.objects.get(gh_id=data['id'])
+                Contributor.objects.get_or_create(
+                    gh_login=data['login'],
+                    gh_url=data['url'],
+                    gh_id=data['id'],
+                    gh_html=data['html_url']
+                )
 
-                except ObjectDoesNotExist as e:
-                    Contributor(gh_login=data['login'], gh_url=data['url'], gh_id=data['id'], gh_html=data['html_url']).save()
 
-
-def get_procon():
+def getprocon():
 
     projects = Project.objects.all()
 
@@ -70,22 +69,18 @@ def get_procon():
             request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
 
             for data in request:
-
                 contributor = Contributor.objects.get(gh_id=data['id'])
                 ProCon.objects.get_or_create(contributor=contributor, project=project)
-
 
 
 class GithubHook(APIView):
 
     permission_classes = (AllowAny,)
 
-    def post(self, request):
-
-        get_repos()
-        get_contribs()
-        get_procon()
-
+    def post(self, *args):
+        getrepos()
+        getcontribs()
+        getprocon()
         return Response(status=status.HTTP_200_OK)
 
 

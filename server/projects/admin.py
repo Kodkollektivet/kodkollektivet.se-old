@@ -1,11 +1,21 @@
 from django.contrib import admin
 
-from .models import Project, Contributor, Language, ProCon, ProLan
+import models
 
 
-admin.site.register(Project)
-admin.site.register(Language)
-admin.site.register(Contributor)
+class ProRolAdmin(admin.ModelAdmin):
+    list_display = ('contributor', 'project', 'role',)
 
-admin.site.register(ProCon)
-admin.site.register(ProLan)
+
+class ProConAdmin(admin.ModelAdmin):
+    list_display = ('contributor', 'project',)
+
+
+admin.site.register(models.Project)
+admin.site.register(models.Language)
+admin.site.register(models.Contributor)
+admin.site.register(models.Role)
+
+admin.site.register(models.ProCon, ProConAdmin)
+admin.site.register(models.ProLan)
+admin.site.register(models.ProRol, ProRolAdmin)

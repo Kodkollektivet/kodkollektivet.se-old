@@ -1,28 +1,44 @@
 
 from rest_framework import viewsets
 
-from .models import Project, Contributor, Language, ProCon, ProLan
-from .serializers import ProjectSerializer, ContributorSerializer, ProConSerializer, LanguageSerializer, ProLanSerializer
+import models
+import serializers
+
 
 class ProjectViewset(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
-    serializer_class = ProjectSerializer
+    queryset = models.Project.objects.all()
+    serializer_class = serializers.ProjectSerializer
     lookup_field = 'slug'
 
+
 class ContributorViewset(viewsets.ModelViewSet):
-    queryset = Contributor.objects.all()
-    serializer_class = ContributorSerializer
-    lookup_field = 'gh_login'
+    queryset = models.Contributor.objects.all()
+    serializer_class = serializers.ContributorSerializer
+    lookup_field = 'slug'
+
+
+class RoleViewset(viewsets.ModelViewSet):
+    queryset = models.Role.objects.all()
+    serializer_class = serializers.RoleSerializer
+    lookup_field = 'slug'
+
 
 class LanguageViewset(viewsets.ModelViewSet):
-    queryset = Language.objects.all()
-    serializer_class = LanguageSerializer
-    lookup_field = 'name'
+    queryset = models.Language.objects.all()
+    serializer_class = serializers.LanguageSerializer
+    lookup_field = 'slug'
+
 
 class ProConViewset(viewsets.ModelViewSet):
-    queryset = ProCon.objects.all()
-    serializer_class = ProConSerializer
+    queryset = models.ProCon.objects.all()
+    serializer_class = serializers.ProConSerializer
+
 
 class ProLanViewset(viewsets.ModelViewSet):
-    queryset = ProLan.objects.all()
-    serializer_class = ProLanSerializer
+    queryset = models.ProLan.objects.all()
+    serializer_class = serializers.ProLanSerializer
+
+
+class ProRolViewset(viewsets.ModelViewSet):
+    queryset = models.ProRol.objects.all()
+    serializer_class = serializers.ProRolSerializer

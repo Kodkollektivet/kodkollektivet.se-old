@@ -28,8 +28,10 @@ router.register(r'info', InfoViewsets)
 router.register(r'project', projectView.ProjectViewset)
 router.register(r'contributor', projectView.ContributorViewset)
 router.register(r'language', projectView.LanguageViewset)
+router.register(r'role', projectView.RoleViewset)
 router.register(r'procon', projectView.ProConViewset)
 router.register(r'prolan', projectView.ProLanViewset)
+router.register(r'prorol', projectView.ProRolViewset)
 
 
 urlpatterns = [
