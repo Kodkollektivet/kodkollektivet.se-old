@@ -9,7 +9,9 @@ angular.module('kodkollektivet.controllers', [])
     .controller('ProjectController', function($scope, $sce, $http, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData, Language, ProLan){
 
         Project.query(function(response){
-            $scope.projects = response;
+            $scope.projects = response.results;
+	    $scope.nextPage = response.next;
+	    
         });
 
         Contributor.query(function(response){
@@ -27,6 +29,10 @@ angular.module('kodkollektivet.controllers', [])
         ProLan.query(function(response){
             $scope.prolans = response;
         });
+
+	$scope.next() = function(project) {
+	    
+	};
 
         $scope.goToDetails = function(project) {
             SharedData.setProject(project);

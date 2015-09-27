@@ -4,7 +4,7 @@ angular.module('kodkollektivet', [
     'ui.bootstrap',
     'uiGmapgoogle-maps',
     'kodkollektivet.controllers',
-    'kodkollektivet.services',
+    'kodkollektivet.factories',
     'ngSanitize',
     'btford.markdown'
 ])
