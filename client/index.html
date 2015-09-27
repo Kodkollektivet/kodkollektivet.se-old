@@ -19,7 +19,6 @@
     <script src="static/js/lib/angular.min.js"></script>
     <script src="static/js/lib/angular-resource.min.js"></script>
     <script src="static/js/lib/angular-ui-router.min.js"></script>
-    <script src="static/js/lib/ct-ui-router-extras.min.js"></script>
     <script src="static/js/lib/angular-animate.min.js"></script>
 
     <script src="static/js/lib/ui-bootstrap.min.js"></script>
@@ -29,10 +28,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="static/js/lib/parallax.min.js"></script>
 
-    <script src="static/js/lib/angular-aside.min.js"></script>
-    <script src="static/js/lib/jquery.fullPage.min.js"></script>
-
-    <script src="static/js/lib/lodash.min.js"></script>
     <script src="static/js/lib/angular-google-maps.min.js"></script>
 
     <script src="static/js/lib/angular-sanitize.min.js"></script>
@@ -49,7 +44,6 @@
 </head>
 <body ng-app="kodkollektivet">
 
-
     <!-- Page Top / Home -->
     <div class="parallax-window" data-anchor="home" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
         <div class="topContainer">
@@ -63,28 +57,22 @@
     <!-- Page Top / Home End -->
 
     <!-- Information -->
-    <div class="page" data-anchor="information">
+    <div class="page">
         <div class="container pageContent" id="infoAnchor" ui-view="info"></div>
     </div>
     <!-- Information End -->
 
     <!-- Project/Contributors -->
     <div class="page">
-        <div class="slide" data-anchor="projs">
-            <div class="container pageContent" ui-view="projects"></div>
-        </div>
-        <div class="slide" data-anchor="conts">
-            <div class="container pageContent" ui-view="contributors"></div>
-        </div>
+       <div class="container pageContent" ui-view="projects"></div>
     </div>
     <!-- Project/Contributors End -->
 
     <!-- Contact -->
-    <div class="page" data-anchor="contactus">
+    <div class="page">
         <div class="container pageContent" ui-view="contact"></div>
     </div>
     <!-- Contact End -->
-
 
 </body>
 </html>

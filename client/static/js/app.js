@@ -2,28 +2,12 @@ angular.module('kodkollektivet', [
     'ui.router',
     'ngResource',
     'ui.bootstrap',
-    'ngAside',
     'uiGmapgoogle-maps',
     'kodkollektivet.controllers',
     'kodkollektivet.services',
-    'ct.ui.router.extras',
     'ngSanitize',
     'btford.markdown'
 ])
-
-    .run(function($state, $rootScope, $location) {
-        //$rootScope.$state = $state;
-        //$rootScope.$location = $location;
-
-        $(document).ready(function() {
-            $('#fullpage').fullpage({
-                scrollBar: true,
-                anchors:['home', 'information', 'procon', 'contactus'],
-                navigation: true,
-                controlArrows: false
-            });
-        });
-    })
 
     .config(['markdownConverterProvider', function (markdownConverterProvider) {
         // options to be passed to Showdown
@@ -34,7 +18,7 @@ angular.module('kodkollektivet', [
     }])
 
     .config(
-    function ($locationProvider, $httpProvider, $resourceProvider, $stateProvider, $stickyStateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
+    function ($locationProvider, $httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
 
         // This only works in angular 3!
         // It makes dealing with Django slashes at the end of everything easier.
@@ -56,46 +40,27 @@ angular.module('kodkollektivet', [
         $stateProvider
             .state('app', {
                 url: '/',
-                templateUrl: "index.html",
+		abstract: true,
                 views: {
                     'info': {
                         templateUrl: 'templates/info.html',
                         controller: 'InfoController'
                     },
-                    'projects': {
-                        templateUrl: 'templates/projects.html',
-                        controller: 'ProjectController'
-                    },
+		    'projects': {
+		    	templateUrl: 'templates/projects.html',
+		    	controller: 'ProjectController'
+		    },
                     'contact': {
                         templateUrl: 'templates/contact.html',
                         controller: 'ContactController'
                     },
-                    'contributors': {
-                        templateUrl: 'templates/contributors.html',
-                        controller: 'ContributorController'
-                    }
-                },
-                dsr: true,
-                sticky: true
-        });
+		},
+        })
 
-        /*$stateProvider.state('app.projects', {
-            url: 'projects',
-            templateUrl: 'templates/projects.html',
-            controller: 'ProjectController',
-            dsr: true
-        });*/
-
-        $stateProvider.state('app.details', {
-            url: '{projectSlug}',
+        .state('app.details', {
+            url: '',
             templateUrl: 'templates/project-details.html',
             controller: 'DetailProjectController'
         });
 
-        /*$stateProvider.state('app.contributors', {
-            url: 'contributors',
-            templateUrl: 'templates/contributors.html'
-        });*/
-
-        $stickyStateProvider.enableDebug(true);
     });

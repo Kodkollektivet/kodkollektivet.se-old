@@ -36,6 +36,6 @@ html, body {
 }
 
 .pageContent{
-    height:100%;
+    min-height:100%;
     background-color: whitesmoke;
 }
