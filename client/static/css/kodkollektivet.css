@@ -37,5 +37,10 @@ html, body {
 
 .pageContent{
     min-height:100%;
-    background-color: whitesmoke;
+    background-color: white;
+}
+
+.card {
+    background-color: white;
+    padding: 2rem;
 }

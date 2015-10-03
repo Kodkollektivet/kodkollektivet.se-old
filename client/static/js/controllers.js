@@ -30,10 +30,6 @@ angular.module('kodkollektivet.controllers', [])
             $scope.prolans = response;
         });
 
-	$scope.next() = function(project) {
-	    
-	};
-
         $scope.goToDetails = function(project) {
             SharedData.setProject(project);
             $scope.project = project;
