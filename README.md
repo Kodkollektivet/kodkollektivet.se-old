@@ -1,6 +1,4 @@
 # Kodkollektivet
-
-Goals of Kodkollektivet:
 --------------------------
 
 - A central point where committed students can be introduced to each other,
