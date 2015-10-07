@@ -8,18 +8,20 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('ProjectController', function($scope, $sce, $http, $state, $stateParams, $location, Project, Contributor, ProCon, SharedData, Language, ProLan){
 
+
         Project.query(function(response){
             $scope.projects = response.results;
 	    $scope.nextPage = response.next;
-	    
+	    console.log($state.current);
         });
 
         Contributor.query(function(response){
             $scope.contributors = response;
+
         });
 
         ProCon.query(function(response){
-            $scope.procons = response;
+	    $scope.procon = response;
         });
 
         Language.query(function (response) {
@@ -31,10 +33,10 @@ angular.module('kodkollektivet.controllers', [])
         });
 
         $scope.goToDetails = function(project) {
+	    console.log($state.current);
             SharedData.setProject(project);
-            $scope.project = project;
-            $scope.projectSlug = project.slug;
-            $scope.info = $sce.trustAsHtml(project.about);
+	    $state.go('app.details');
+//            $scope.info = $sce.trustAsHtml(project.about);
         };
 
         $scope.leaveDetails = function() {
@@ -45,9 +47,10 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('DetailProjectController', function ($scope, $state, $stateParams, Project, SharedData) {
 
-	
         var selectedProject = SharedData.getProject();
-        $scope.projectSlug = selectedProject.$stateParams.slug;
+        $scope.project = selectedProject;
+        $scope.projectSlug = selectedProject.slug;
+//        $scope.projectSlug = selectedProject.$stateParams.slug;
     })
 
     .controller('ContributorController', function ($scope, $http, Contributor, SharedData) {

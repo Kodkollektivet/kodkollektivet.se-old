@@ -1,12 +1,8 @@
 angular.module('kodkollektivet.factories', [])
 
-    .factory('Info', function($resource) {
-        return $resource('http://api.kodkollektivet.se/info/');
-    })
-
     // TODO: Make Project factory generic to allow next/previous
     .factory('Project', function($resource){
-        return $resource('http://127.0.0.1:8000/project/', {}, {
+        return $resource('http://api.kodkollektivet.se/project/', {}, {
 	    query: { method: "GET", isArray: false }
 	});
     })

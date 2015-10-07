@@ -1,14 +1,19 @@
 
-from rest_framework import viewsets
+from rest_framework import viewsets, pagination
 
 from . import models
 from . import serializers
 
+class ProjectResultPagination(pagination.PageNumberPagination):
+    page_size = 7
+    page_size_query_param = 'page_size'
+    max_page_size = 10
 
 class ProjectViewset(viewsets.ModelViewSet):
     queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
     lookup_field = 'slug'
+    pagination_class = ProjectResultPagination
 
 
 class ContributorViewset(viewsets.ModelViewSet):
