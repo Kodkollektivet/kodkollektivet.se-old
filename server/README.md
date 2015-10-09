@@ -1,22 +1,23 @@
 
-# Kodkollektivet.se website
+# Kodkollektivet.se API description
 ### http://api.kodkollektivet.se
 #### The Rest API provides information about Kodkollektivet projects, members and related info.
 
 
 
-Info
+# Info
 
 /info/
 
-# ! This will be removed, dont use!!
+### ! This will be removed, dont use!!
 
 
 
-Project
 
-/project/
 
+# /project/
+
+### Project
 #### This endpoint returns a pagination object.
 #### In the results list is the project objects.
 
@@ -35,9 +36,11 @@ Returns
 
 
 
-Contributor
 
-/contributor/
+
+# /contributor/
+
+### Contributor
 
 #### This endpoints returns all contributors
 
@@ -54,9 +57,11 @@ Return
 
 
 
-Language
 
-/language/
+
+# /language/
+
+### Language
 
 #### This endpoints returns all languages
 
@@ -67,9 +72,11 @@ Return
 
 
 
-Role
 
-/role/
+
+# /role/
+
+### Role
 
 #### This endpoints returns all roles
 
@@ -80,9 +87,11 @@ Return
 
 
 
-Procon
 
-/procon/
+
+# /procon/
+
+### Procon
 
 #### This endpoints returns all project <-> contributor relations
 
@@ -93,9 +102,11 @@ Return
 
 
 
-Prolan
 
-/prolan/
+
+# /prolan/
+
+### Prolan
 
 #### This endpoints returns all project <-> contributor relations
 
@@ -106,9 +117,11 @@ Return
 
 
 
-Prorol
 
-/prolan/
+
+# /prolan/
+
+### Prorol
 
 #### This endpoints returns all project <-> contributor <-> role relations
 
