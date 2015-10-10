@@ -16,7 +16,7 @@
     <script src="node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.min.js"></script>
     <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <!-- <script src="node_modules/angular-route/angular-route.min.js"></script> -->
     
     <script src="node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
     <script src="node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
@@ -26,7 +26,6 @@
     <script src="static/js/factories.js"></script>
 
     <title>Kodkollektivet</title>
-    <base href="/#">
 </head>
 <body ng-app="kodkollektivet">
 
@@ -37,7 +36,7 @@
     <!-- Information End -->
 
     <!-- Content -->
-    <div ng-view></div>
+    <div ng-include src="'templates/projects.html'"</div>
     <!-- Content End -->
 </body>
 </html>
