@@ -1,12 +1,14 @@
 
 *.pyc
-
 *~
 
 server/.idea
 client/.idea
+.idea
 
+production.py
 server/settings/production.py
+db.sqlite3
 server/db.sqlite3
 
 node_modules/

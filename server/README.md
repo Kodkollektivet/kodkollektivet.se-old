@@ -3,19 +3,33 @@
 ### http://api.kodkollektivet.se
 #### The Rest API provides information about Kodkollektivet projects, members and related info.
 
+# Setup development environment
+* install Python > 2.7.9
+* install pip if not installed
+* create Python virtualenv, virtualenvwrapper is recommented
+* navigate to kodkollektivet.se/server/ folder
+* pip install -r requriments.txt
+* python manage.py runserver 0.0.0.0:8001
+* go to [localhost port 8001](http://127.0.0.1:8001/) for browseable API
+* go to [localhost port 8001](http://127.0.0.1:8001/admin/) for admin page
 
 
-# Info
+Other:
+* python manage.py createsuperuser  # Create superuser
+* webhook available at /github/webhook/
+
+
+
+# API Endpoints
+
+## Info
 
 /info/
 
 ### ! This will be removed, dont use!!
 
 
-
-
-
-# /project/
+## /project/
 
 ### Project
 #### This endpoint returns a pagination object.
@@ -36,9 +50,7 @@ Returns
 
 
 
-
-
-# /contributor/
+## /contributor/
 
 ### Contributor
 
@@ -57,9 +69,7 @@ Return
 
 
 
-
-
-# /language/
+## /language/
 
 ### Language
 
@@ -72,9 +82,7 @@ Return
 
 
 
-
-
-# /role/
+## /role/
 
 ### Role
 
@@ -88,8 +96,7 @@ Return
 
 
 
-
-# /procon/
+## /procon/
 
 ### Procon
 
@@ -102,9 +109,7 @@ Return
 
 
 
-
-
-# /prolan/
+## /prolan/
 
 ### Prolan
 
@@ -117,9 +122,7 @@ Return
 
 
 
-
-
-# /prorol/
+## /prorol/
 
 ### Prorol
 
