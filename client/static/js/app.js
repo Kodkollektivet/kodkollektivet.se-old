@@ -3,4 +3,5 @@ angular.module('kodkollektivet', [
     'ui.bootstrap',
     'kodkollektivet.controllers',
     'kodkollektivet.factories',
+    'kodkollektivet.directives',
 ]);

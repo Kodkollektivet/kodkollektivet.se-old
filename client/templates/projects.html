@@ -6,7 +6,7 @@
     <div class="well" align="center" ng-repeat="project in projects">
         <h3 id="{{ project.slug }}"><b>{{ project.name }}</b></h3>
         <p>{{ project.gh_url }}</p>
-        <div ng-include="'templates/contributors.html'"></div>
+        <project-contributors></project-contributors>
     </div>
 </div>
 
