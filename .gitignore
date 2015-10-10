@@ -8,3 +8,5 @@ client/.idea
 
 server/settings/production.py
 server/db.sqlite3
+
+node_modules/
