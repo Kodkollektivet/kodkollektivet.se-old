@@ -40,27 +40,26 @@ angular.module('kodkollektivet', [
         $stateProvider
             .state('app', {
                 url: '/',
-		abstract: true,
+                abstract: true,
                 views: {
                     'info': {
                         templateUrl: 'templates/info.html',
                         controller: 'InfoController'
                     },
-		    'projects': {
-		    	templateUrl: 'templates/projects.html',
-		    	controller: 'ProjectController'
-		    },
+                    'projects': {
+                        templateUrl: 'templates/projects.html',
+                        controller: 'ProjectController'
+                    },
                     'contact': {
                         templateUrl: 'templates/contact.html',
                         controller: 'ContactController'
                     },
-		},
-        })
+                },
+            })
 
-        .state('app.details', {
-            url: '',
-            templateUrl: 'templates/project-details.html',
-            controller: 'DetailProjectController'
-        });
-
+            .state('app.details', {
+                url: '',
+                templateUrl: 'templates/project-details.html',
+                controller: 'DetailProjectController'
+            });
     });
