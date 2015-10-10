@@ -36,7 +36,6 @@ angular.module('kodkollektivet.controllers', [])
             console.log($state.current);
             SharedData.setProject(project);
             $state.go('app.details');
-//            $scope.info = $sce.trustAsHtml(project.about);
         };
 
         $scope.leaveDetails = function() {
@@ -50,7 +49,6 @@ angular.module('kodkollektivet.controllers', [])
         var selectedProject = SharedData.getProject();
         $scope.project = selectedProject;
         $scope.projectSlug = selectedProject.slug;
-//        $scope.projectSlug = selectedProject.$stateParams.slug;
     })
 
     .controller('ContributorController', function ($scope, $http, Contributor, SharedData) {
@@ -81,7 +79,6 @@ angular.module('kodkollektivet.controllers', [])
                 },
                 function(err){
                     // error callback
-                    //console.log(err.status);
                 }
             );
         };
