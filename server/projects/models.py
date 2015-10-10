@@ -29,9 +29,9 @@ class Project(models.Model):
         super(Project, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.slug
+        return self.name
 
-
+    
 class Role(models.Model):
     role = models.CharField(max_length=254, blank=True)
     slug = models.CharField(max_length=254, blank=True)
@@ -44,7 +44,7 @@ class Role(models.Model):
         super(Role, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.slug
+        return self.role
 
 
 class Contributor(models.Model):
@@ -72,9 +72,9 @@ class Contributor(models.Model):
         super(Contributor, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.slug
+        return self.name
 
-
+        
 class Language(models.Model):
     name = models.CharField(max_length=254)
     slug = models.CharField(max_length=254, blank=True)
@@ -87,29 +87,54 @@ class Language(models.Model):
         super(Language, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.slug
+        return self.name
 
+        
+class Framework(models.Model):
+    name = models.CharField(max_length=254)
+    slug = models.CharField(max_length=254, blank=True)
+
+    def save(self, *args, **kwargs):
+        """
+        Set slug
+        """
+        self.slug = self.name
+        super(Framework, self).save(*args, **kwargs)
+
+    def __unicode__(self):
+        return self.name
+
+
+class ProFra(models.Model):
+    project = models.ForeignKey(Project)
+    framework = models.ForeignKey(Framework)
+
+    class Meta:
+        verbose_name ='Project-Framework relation'
 
 class ProCon(models.Model):
     project = models.ForeignKey(Project)
     contributor = models.ForeignKey(Contributor)
 
-    def __unicode__(self):
-        return self.contributor.slug + ' <-> ' + self.project.slug
-
+    class Meta:
+        verbose_name ='Project-Contributor relation'
+    
 
 class ProLan(models.Model):
     project = models.ForeignKey(Project)
     language = models.ForeignKey(Language)
 
-    def __unicode__(self):
-        return self.language.slug + ' <-> ' + self.project.slug
+    class Meta:
+        verbose_name ='Project-Language relation'
 
 
 class ProRol(models.Model):
     project = models.ForeignKey(Project)
     contributor = models.ForeignKey(Contributor)
     role = models.ForeignKey(Role)
+
+    class Meta:
+        verbose_name ='Project-Role-Contributor relation'
 
 
 

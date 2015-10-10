@@ -1,4 +1,3 @@
-
 from rest_framework import viewsets, pagination
 
 from . import models
@@ -9,6 +8,7 @@ class ProjectResultPagination(pagination.PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 10
 
+    
 class ProjectViewset(viewsets.ModelViewSet):
     queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
@@ -22,6 +22,12 @@ class ContributorViewset(viewsets.ModelViewSet):
     lookup_field = 'slug'
 
 
+class FrameworkViewset(viewsets.ModelViewSet):
+    queryset = models.Framework.objects.all()
+    serializer_class = serializers.FrameworkSerializer
+    lookup_field = 'slug'
+    
+
 class RoleViewset(viewsets.ModelViewSet):
     queryset = models.Role.objects.all()
     serializer_class = serializers.RoleSerializer
@@ -34,10 +40,15 @@ class LanguageViewset(viewsets.ModelViewSet):
     lookup_field = 'slug'
 
 
+class ProFraViewset(viewsets.ModelViewSet):
+    queryset = models.ProFra.objects.all()
+    serializer_class = serializers.ProFraSerializer
+
+    
 class ProConViewset(viewsets.ModelViewSet):
     queryset = models.ProCon.objects.all()
     serializer_class = serializers.ProConSerializer
-
+    
 
 class ProLanViewset(viewsets.ModelViewSet):
     queryset = models.ProLan.objects.all()

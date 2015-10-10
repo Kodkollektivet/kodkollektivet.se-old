@@ -1,53 +1,68 @@
 
 from rest_framework import serializers
 
-from .models import Project, Contributor, Language, Role, ProCon, ProLan, ProRol
+from . import models
 
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Project
+        model = models.Project
         fields = ('slug', 'name', 'about', 'gh_name', 'gh_id', 'gh_url')
         lookup_fields = 'slug'
 
 
 class ContributorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Contributor
+        model = models.Contributor
         fields = ('slug', 'name', 'email', 'website', 'about', 'gh_login', 'gh_url', 'gh_html')
         lookup_fields = 'slug'
 
 
 class RoleSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Role
+        model = models.Role
         fields = ('slug', 'role')
         lookup_fields = 'slug'
 
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Language
+        model = models.Language
         fields = ('slug', 'name')
         lookup_fields = 'slug'
 
+        
+class FrameworkSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Framework
+        fields = ('slug', 'name')
+        lookup_fields = 'slug'
+        
 
 class ProLanSerializer(serializers.ModelSerializer):
     project = serializers.SlugRelatedField(read_only=True, slug_field='slug')
     language = serializers.SlugRelatedField(read_only=True, slug_field='slug')
 
     class Meta:
-        model = ProLan
+        model = models.ProLan
         fields = ('project', 'language')
+
+        
+class ProFraSerializer(serializers.ModelSerializer):
+    project = serializers.SlugRelatedField(read_only=True, slug_field='slug')
+    framework = serializers.SlugRelatedField(read_only=True, slug_field='slug')
+
+    class Meta:
+        model = models.ProFra
+        fields = ('project', 'framework')
 
 
 class ProConSerializer(serializers.ModelSerializer):
-
     project = serializers.SlugRelatedField(read_only=True, slug_field='slug')
     contributor = serializers.SlugRelatedField(read_only=True, slug_field='slug')
 
     class Meta:
-        model = ProCon
+        model = models.ProCon
         fields = ('project', 'contributor')
 
 
@@ -57,6 +72,6 @@ class ProRolSerializer(serializers.ModelSerializer):
     role = serializers.SlugRelatedField(read_only=True, slug_field='slug')
 
     class Meta:
-        model = ProRol
+        model = models.ProRol
         fields = ('project', 'contributor', 'role')
 

@@ -2,20 +2,55 @@ from django.contrib import admin
 
 from . import models
 
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    exclude = ('slug',)    
 
-class ProRolAdmin(admin.ModelAdmin):
-    list_display = ('contributor', 'project', 'role',)
+    
+class ContributorAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    exclude = ('slug',)    
+    
+
+class RoleAdmin(admin.ModelAdmin):
+    list_display = ('role',)
+    exclude = ('slug',)        
+
+    
+class LanguageAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    exclude = ('slug',)            
+
+
+class FrameworkAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    exclude = ('slug',)                
+
+    
+class ProFraAdmin(admin.ModelAdmin):
+    list_display = ('project', 'framework',)
 
 
 class ProConAdmin(admin.ModelAdmin):
-    list_display = ('contributor', 'project',)
+    list_display = ('project', 'contributor',)
+
+    
+class ProLanAdmin(admin.ModelAdmin):
+    list_display = ('project', 'language',)
+
+    
+class ProRolAdmin(admin.ModelAdmin):
+    list_display = ('project', 'contributor', 'role',)
 
 
-admin.site.register(models.Project)
-admin.site.register(models.Language)
-admin.site.register(models.Contributor)
-admin.site.register(models.Role)
+    
+admin.site.register(models.Project, ProjectAdmin)
+admin.site.register(models.Language, LanguageAdmin)
+admin.site.register(models.Contributor, ContributorAdmin)
+admin.site.register(models.Framework, FrameworkAdmin)
+admin.site.register(models.Role, RoleAdmin)
 
 admin.site.register(models.ProCon, ProConAdmin)
-admin.site.register(models.ProLan)
+admin.site.register(models.ProLan, ProLanAdmin)
 admin.site.register(models.ProRol, ProRolAdmin)
+admin.site.register(models.ProFra, ProFraAdmin)
