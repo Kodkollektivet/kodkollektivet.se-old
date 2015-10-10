@@ -14,4 +14,5 @@ Feel free to contributo to one or all of kodkollektivets projects.
 * clone repo.
 * navigate to /kodkollektivet.se/client/
 * run: npm install && npm start
+* go to [localhost port 8000](http://127.0.0.1:8000/)
 
