@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/Kodkollektivet/kodkollektivet.se/issues"
   },
-  "homepage": "https://github.com/Kodkollektivet/kodkollektivet.se#readme"
+  "homepage": "https://github.com/Kodkollektivet/kodkollektivet.se#readme",
+  "dependencies": {
+    "angular": "^1.4.7",
+    "angular-animate": "^1.4.7",
+    "angular-resource": "^1.4.7",
+    "angular-route": "^1.4.7",
+    "angular-sanitize": "^1.4.7"
+  }
 }

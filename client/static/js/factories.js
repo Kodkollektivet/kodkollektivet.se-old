@@ -15,10 +15,6 @@ angular.module('kodkollektivet.factories', [])
         return $resource('http://api.kodkollektivet.se/language/');
     })
 
-    .factory('GhContributor', function($resource) {
-
-    })
-
     .factory('ProCon', function($resource){
         return $resource('http://api.kodkollektivet.se/procon/');
     })

@@ -6,37 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/lib/angular-aside.min.css">
-    <link rel="stylesheet" href="static/css/lib/animate.css">
-    <link rel="stylesheet" href="static/css/lib/jquery.fullPage.css">
     <link rel="stylesheet" href="static/css/kodkollektivet.css">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
 
     <!-- JavaScript -->
-    <script src="static/js/lib/angular.min.js"></script>
-    <script src="static/js/lib/angular-resource.min.js"></script>
-    <script src="static/js/lib/angular-ui-router.min.js"></script>
-    <script src="static/js/lib/angular-animate.min.js"></script>
-
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    
     <script src="static/js/lib/ui-bootstrap.min.js"></script>
     <script src="static/js/lib/ui-bootstrap-tpls.min.js"></script>
 
-    <script src="static/js/lib/underscore-min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="static/js/lib/parallax.min.js"></script>
-
-    <script src="static/js/lib/angular-google-maps.min.js"></script>
-
-    <script src="static/js/lib/angular-sanitize.min.js"></script>
-    <script src="static/js/lib/markdown.js"></script>
-    <script src="static/js/lib/Showdown.min.js"></script>
-    <script src="static/js/lib/github.js"></script>
-
     <script src="static/js/app.js"></script>
-    <script src="static/js/controllers.js"></script>
+    <Script src="static/js/controllers.js"></script>
     <script src="static/js/factories.js"></script>
 
     <title>Kodkollektivet</title>
@@ -44,35 +30,14 @@
 </head>
 <body ng-app="kodkollektivet">
 
-    <!-- Page Top / Home -->
-    <div class="parallax-window" data-anchor="home" data-parallax="scroll" data-image-src="http://censemaking.files.wordpress.com/2012/12/educationhead.jpg">
-        <div class="topContainer">
-            <div class="headingtext animated fadeInDownBig">
-                <h1>
-                    Kodkollektivet
-                </h1>
-            </div>
-        </div>
-    </div>
-    <!-- Page Top / Home End -->
-
     <!-- Information -->
     <div class="page">
-        <div class="container pageContent" id="infoAnchor" ng-include src="'templates/info.html'"></div>
+        <div class="container pageContent" ng-include src="'templates/info.html'"></div>
     </div>
     <!-- Information End -->
 
-    <!-- Project/Contributors -->
-    <div class="page">
-       <div class="container pageContent" ui-view="projects"></div>
-    </div>
-    <!-- Project/Contributors End -->
-
-    <!-- Contact -->
-    <div class="page">
-        <div class="container pageContent" ui-view="contact"></div>
-    </div>
-    <!-- Contact End -->
-
+    <!-- Content -->
+    <div ng-view></div>
+    <!-- Content End -->
 </body>
 </html>

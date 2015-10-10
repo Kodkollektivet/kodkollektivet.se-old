@@ -5,12 +5,8 @@
 
 <div class="well" align="center" ng-repeat="project in projects">
   <h3><b>{{ project.name }}</b></h3>
-
-  <lang-tag ng-repeat="prolan in prolans | filter:project.slug:true">{{ prolan.language }} </lang-tag>
-  </br></br>
-  <button class="btn btn-block" ng-click="goToDetails(project)">Details</button>
 </div>
 
-<!-- <button class="btn btn-block" ng-click="">Next</button> -->
+
 
 

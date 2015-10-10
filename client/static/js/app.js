@@ -1,24 +1,13 @@
 angular.module('kodkollektivet', [
-    'ui.router',
+    'ngRoute',
     'ngResource',
+    'ngSanitize',    
     'ui.bootstrap',
-    'uiGmapgoogle-maps',
     'kodkollektivet.controllers',
     'kodkollektivet.factories',
-    'ngSanitize',
-    'btford.markdown'
 ])
 
-    .config(['markdownConverterProvider', function (markdownConverterProvider) {
-        // options to be passed to Showdown
-        // see: https://github.com/coreyti/showdown#extensions
-        markdownConverterProvider.config({
-            extensions: ['github']
-        });
-    }])
-
-    .config(
-    function ($locationProvider, $httpProvider, $resourceProvider, $stateProvider, $urlRouterProvider, uiGmapGoogleMapApiProvider){
+    .config(function ($locationProvider, $httpProvider, $resourceProvider, $routeProvider){
 
         // This only works in angular 3!
         // It makes dealing with Django slashes at the end of everything easier.
@@ -27,39 +16,30 @@ angular.module('kodkollektivet', [
         // Django expects jQuery like headers
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
-        // CSRF Support
-        $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-        $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-
 
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: true
         });
 
-        $stateProvider
-            .state('app', {
-                url: '/',
-                abstract: true,
-                views: {
-                    'info': {
-                        templateUrl: 'templates/info.html',
-                        controller: 'InfoController'
-                    },
-                    'projects': {
-                        templateUrl: 'templates/projects.html',
-                        controller: 'ProjectController'
-                    },
-                    'contact': {
-                        templateUrl: 'templates/contact.html',
-                        controller: 'ContactController'
-                    },
-                },
-            })
+	$routeProvider.
+	    when('/', {
+		templateUrl: 'templates/projects.html',
+		controller: 'ProjectsCtrl'
+	    })
+	    // when('/project/:slug', {
+	    // 	templateUrl:
+	    // 	controller:
+	    // }).
+	    // when('/members', {
+	    // 	templateUrl:
+	    // 	controller:
+	    // }).
+	    // when('/member/:slug', {
+	    // 	templateUrl:
+	    // 	controller:
+	    // })
+	    
 
-            .state('app.details', {
-                url: '',
-                templateUrl: 'templates/project-details.html',
-                controller: 'DetailProjectController'
-            });
+	.otherwise({redirectTo: '/'});
     });
