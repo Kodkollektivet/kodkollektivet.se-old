@@ -95,6 +95,18 @@ Return
 
 
 
+## /framework/
+
+### Framework
+
+#### This endpoints returns all frameworks
+
+Return
+
+* "slug" : string
+* "name" : string
+
+
 
 ## /procon/
 
@@ -133,3 +145,16 @@ Return
 * "project" : string
 * "contributor" : string
 * "role" : string
+
+
+## /profra/
+
+### Profra
+
+#### This endpoints returns all project <-> framework relations
+
+Return
+
+* "project" : string
+* "framework" : string
+
