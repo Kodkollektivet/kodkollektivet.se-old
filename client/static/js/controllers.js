@@ -11,8 +11,8 @@ angular.module('kodkollektivet.controllers', [])
 
         Project.query(function(response){
             $scope.projects = response.results;
-	    $scope.nextPage = response.next;
-	    console.log($state.current);
+            $scope.nextPage = response.next;
+            console.log($state.current);
         });
 
         Contributor.query(function(response){
@@ -21,7 +21,7 @@ angular.module('kodkollektivet.controllers', [])
         });
 
         ProCon.query(function(response){
-	    $scope.procon = response;
+            $scope.procon = response;
         });
 
         Language.query(function (response) {
@@ -33,9 +33,9 @@ angular.module('kodkollektivet.controllers', [])
         });
 
         $scope.goToDetails = function(project) {
-	    console.log($state.current);
+            console.log($state.current);
             SharedData.setProject(project);
-	    $state.go('app.details');
+            $state.go('app.details');
 //            $scope.info = $sce.trustAsHtml(project.about);
         };
 
@@ -76,7 +76,7 @@ angular.module('kodkollektivet.controllers', [])
             Contact.save($scope.contact,
                 function(data){
                     //success callback
-                    alert('Thank you!\nWe contact you soon!\nBest regards\n\t\t / Kodkollektivet')
+                    alert('Thank you!\nWe contact you soon!\nBest regards\n\t\t / Kodkollektivet');
 
                 },
                 function(err){
