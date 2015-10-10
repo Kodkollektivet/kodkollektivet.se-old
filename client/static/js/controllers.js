@@ -12,12 +12,10 @@ angular.module('kodkollektivet.controllers', [])
         Project.query(function(response){
             $scope.projects = response.results;
             $scope.nextPage = response.next;
-            console.log($state.current);
         });
 
         Contributor.query(function(response){
             $scope.contributors = response;
-
         });
 
         ProCon.query(function(response){
@@ -33,7 +31,6 @@ angular.module('kodkollektivet.controllers', [])
         });
 
         $scope.goToDetails = function(project) {
-            console.log($state.current);
             SharedData.setProject(project);
             $state.go('app.details');
         };
