@@ -4,5 +4,5 @@ angular.module('kodkollektivet.filters', [])
         return function(project, contributor, procon){
             console.log(project);
             console.log(contributor);
-        }
+        };
     });
