@@ -1,3 +1,8 @@
+# Diagrams, flowcharts and related
+
+[General overview](https://drive.google.com/file/d/0Bzd3vno6_BwVcTFEbHVCbzlpLWM/view?usp=sharing)
+
+
 # Kodkollektivet
 --------------------------
 
