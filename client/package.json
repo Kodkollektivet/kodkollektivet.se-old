@@ -25,7 +25,6 @@
     "angular-resource": "^1.4.7",
     "angular-route": "^1.4.7",
     "angular-sanitize": "^1.4.7",
-    "angular-ui-bootstrap": "^0.14.0",
-    "bootstrap": "^3.3.5"
+    "angular-ui-bootstrap": "^0.14.0"
   }
 }
