@@ -18,26 +18,18 @@
     <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="node_modules/angular-route/angular-route.min.js"></script>
     
-    <script src="static/js/lib/ui-bootstrap.min.js"></script>
-    <script src="static/js/lib/ui-bootstrap-tpls.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/ui-bootstrap.min.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
     <script src="static/js/app.js"></script>
     <Script src="static/js/controllers.js"></script>
     <script src="static/js/factories.js"></script>
+    <script src="static/js/directives.js"></script>
 
     <title>Kodkollektivet</title>
-    <base href="/#">
+    <base href="/">
 </head>
 <body ng-app="kodkollektivet">
-
-    <!-- Information -->
-    <div class="page">
-        <div class="container pageContent" ng-include src="'templates/info.html'"></div>
-    </div>
-    <!-- Information End -->
-
-    <!-- Content -->
-    <div ng-view></div>
-    <!-- Content End -->
+   <div ng-view></div>
 </body>
 </html>

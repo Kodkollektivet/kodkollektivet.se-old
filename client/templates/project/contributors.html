@@ -1,0 +1,11 @@
+<div class="well">
+    <div align="center">
+        <h4>Project contributors</h4>
+    </div>
+
+    <div align="center" ng-repeat="contributor in procon | filter:project.slug:true">
+        <a href="{{ contributor.gh_html }}" target="_blank">
+          {{ contributor.contributor }}
+        </a>
+    </div>
+</div>
