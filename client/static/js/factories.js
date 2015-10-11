@@ -19,6 +19,10 @@ angular.module('kodkollektivet.factories', [])
         return $resource('http://api.kodkollektivet.se/procon/');
     })
 
+    .factory('ProFra', function($resource){
+        return $resource('http://api.kodkollektivet.se/profra/');
+    })
+
     .factory('ProLan', function($resource){
         return $resource('http://api.kodkollektivet.se/prolan/');
     })

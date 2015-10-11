@@ -3,10 +3,15 @@
     <h2>Projects</h2>
 </div>
 
-<div class="well" align="center" ng-repeat="project in projects">
-    <h3 id="{{ project.slug }}"><b>{{ project.name }}</b></h3>
-    <p>{{ project.gh_url }}</p>
+<div ng-repeat="project in projects">
+  <h2 align="center">{{ project.name }}</h2>
 
-    <project-contributors></project-contributors>
+  <ul>
+    <li ng-repeat="lan in prolan | filter:project.slug:true">{{ lan.language }}</li>
+  </ul>
 
+  <ul>
+    <li ng-repeat="fra in profra | filter:project.slug:true">{{ fra.framework }}</li>
+  </ul>
+  
 </div>

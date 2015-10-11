@@ -7,11 +7,6 @@ angular.module('kodkollektivet', [
     'kodkollektivet.directives',
 ])
     .config(function($routeProvider, $locationProvider) {
-
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: true
-        });
         
         $routeProvider
             .when('/', {
