@@ -14,8 +14,8 @@ angular.module('kodkollektivet', [
                 templateUrl: 'templates/home.html',
                 controller: 'HomeCtrl',
 		resolve: {
-		    items:function(GetAPIdata){
-			return GetAPIdata.getItems();
+		    items:function(APIdata){
+			return APIdata.homeItems();
 		    }
 		}
             })

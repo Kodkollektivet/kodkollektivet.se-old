@@ -1,64 +1,38 @@
 angular.module('kodkollektivet.controllers', [])
 
-    .controller('HomeCtrl', function($scope, SharedData, Project, ProCon, ProFra, ProLan, items){
+    .controller('HomeCtrl', function($scope, SharedData, items){
 
 	items.projects.then(function(data){
 	    $scope.projects = data.results;
-	    SharedData.setProjects(data.results);	    
-	});
+	    SharedData.setProjects(data.results);
+    	});
 
-        ProCon.query(function(response){
-            $scope.procon = response;
+	items.prolan.then(function(data){
+            $scope.prolan = data;
+	    SharedData.setProlan(data);
         });
 
-	ProFra.query(function(response){
-	    $scope.profra = response;
+	items.profra.then(function(data){
+	    $scope.profra = data;
+	    SharedData.setProfra(data);
 	});
 
-	ProLan.query(function(response){
-	    $scope.prolan = response;
+	items.procon.then(function(data){
+	    $scope.procon = data;
+	    SharedData.setProcon(data);
 	});
 	
     })
 
 
-    .controller('ProjectsCtrl', function($scope, Project, ProCon, ProFra, ProLan){
-
-        Project.query(function(response){
-            $scope.projects = response.results;
-        });
-
-        ProCon.query(function(response){
-            $scope.procon = response;
-        });
-
-	ProFra.query(function(response){
-	    $scope.profra = response;
-	});
-
-	ProLan.query(function(response){
-	    $scope.prolan = response;
-	});
+    .controller('ProjectsCtrl', function($scope, SharedData){
 	
-    })
+	$scope.projects = SharedData.getProjects();
 
-    .controller('ProjectDetailsCtrl', function($scope, $routeParams, Project, ProCon, ProFra, ProLan){
+	$scope.procon = SharedData.getProcon();
 
+	$scope.profra = SharedData.getProfra();
 
-        Project.query(function(response){
-            $scope.projects = response.results;
-        });
-
-        ProCon.query(function(response){
-            $scope.procon = response;
-        });
-
-	ProFra.query(function(response){
-	    $scope.profra = response;
-	});
-
-	ProLan.query(function(response){
-	    $scope.prolan = response;
-	});
-	
+	$scope.prolan = SharedData.getProlan();
+		
     });

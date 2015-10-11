@@ -15,15 +15,15 @@ angular.module('kodkollektivet.factories', [])
         return $resource('http://api.kodkollektivet.se/language/');
     })
 
-    .factory('ProCon', function($resource){
+    .factory('Procon', function($resource){
         return $resource('http://api.kodkollektivet.se/procon/');
     })
 
-    .factory('ProFra', function($resource){
+    .factory('Profra', function($resource){
         return $resource('http://api.kodkollektivet.se/profra/');
     })
 
-    .factory('ProLan', function($resource){
+    .factory('Prolan', function($resource){
         return $resource('http://api.kodkollektivet.se/prolan/');
     })
 
