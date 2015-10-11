@@ -1,17 +1,17 @@
 
 angular.module('kodkollektivet.directives', [])
 
-    .directive('projects', function(){
+    .directive('projectList', function(){
         return {
             restrict: 'E',
-            templateUrl: 'templates/projects.html'
+            templateUrl: 'templates/project/list.html'
         };
     })
 
     .directive('projectContributors', function(){
         return {
             restrict: 'E',
-            templateUrl: 'templates/contributors.html'
+            templateUrl: 'templates/project/contributors.html'
         };
     });
                
