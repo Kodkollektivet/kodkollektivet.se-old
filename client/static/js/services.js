@@ -1,21 +1,29 @@
 angular.module('kodkollektivet.services', ['ngResource'])
-    .service('APIdata', function(Project, Procon, Profra, Prolan){
 
-        var create_promise = function (provider){
-            return provider.query().$promise
-                .then(function (response){
-                    return response;
-                });
-        };
+    .service('getProfra', function (Profra){
+        return Profra.query().$promise
+            .then(function (response){
+                return response;
+            });
+    })
 
-        return {
-            procon: create_promise(Procon),
-            profra: create_promise(Profra),
-            prolan: create_promise(Prolan),
+    .service('getProcon', function (Procon){
+        return Procon.query().$promise
+            .then(function (response){
+                return response;
+            });
+    })
 
-            projects: Project.query().$promise
-                .then(function (response){
-                    return response.results;
-                }),
-        };
+    .service('getProlan', function (Prolan){
+        return Prolan.query().$promise
+            .then(function (response){
+                return response;
+            });
+    })
+
+    .service('getProjects', function (Project){
+        return  Project.query().$promise
+            .then(function (response){
+                return response.results;
+            });
     });

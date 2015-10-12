@@ -7,40 +7,29 @@ angular.module('kodkollektivet', [
     'kodkollektivet.directives',
     'kodkollektivet.services',    
 ])
-    .config(function($routeProvider, $locationProvider) {
+    .config(function($locationProvider, $resourceProvider, $routeProvider)  {
+         // This only works in angular 3!
+        // It makes dealing with Django slashes at the end of everything easier.
+        $resourceProvider.defaults.stripTrailingSlashes = false;
         
         $routeProvider
             .when('/', {
                 templateUrl: 'templates/home.html',
                 controller: 'HomeCtrl',
                 resolve: {
-                    profra: function(APIdata){
-                        return APIdata.profra;
-                    },
-                    prolan: function(APIdata){
-                        return APIdata.prolan;
-                    },
-                    projects: function(APIdata){
-                        return APIdata.projects;
-                    },
+                    profra: function (getProfra) { return getProfra; },
+                    prolan: function (getProlan) { return getProlan; },
+                    projects: function (getProjects) { return getProjects; },
                 }
             })
             .when('/projects', {
                 templateUrl: 'templates/project/list.html',
                 controller: 'ProjectsCtrl',
                 resolve: {
-                    procon: function(APIdata){
-                        return APIdata.procon;
-                    },
-                    profra: function(APIdata){
-                        return APIdata.profra;
-                    },
-                    prolan: function(APIdata){
-                        return APIdata.prolan;
-                    },
-                    projects: function(APIdata){
-                        return APIdata.projects;
-                    },
+                    procon: function (getProcon) { return getProcon; },
+                    profra: function (getProfra) { return getProfra; },
+                    prolan: function (getProlan) { return getProlan; },
+                    projects: function (getProjects) { return getProjects; },
                 }
             })
             .when('/project/:slug', {
