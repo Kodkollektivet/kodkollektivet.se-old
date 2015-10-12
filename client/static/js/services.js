@@ -1,27 +1,21 @@
 angular.module('kodkollektivet.services', ['ngResource'])
+    .service('APIdata', function(Project, Procon, Profra, Prolan){
 
-    .service('APIdata', function(SharedData, Project, Procon, Profra, Prolan, Contributor){
+        var create_promise = function (provider){
+            return provider.query().$promise
+                .then(function (response){
+                    return response;
+                });
+        };
+
         return {
-            homeItems: function(){
+            procon: create_promise(Procon),
+            profra: create_promise(Profra),
+            prolan: create_promise(Prolan),
 
-                if (SharedData.getProjects().length == 0){
-
-		    var api_data = {'projects': Project.query().$promise,
-    				    'procon': Procon.query().$promise,
-				    'profra': Profra.query().$promise,
-				    'prolan': Prolan.query().$promise,
-		    		    'contributors': Contributor.query().$promise,
-		    		   };
-
-		    api_data.projects.then(function(data){
-			SharedData.setProjects(data.results);
-		    });
-                    return api_data;
-
-                }
-                else {
-                    return SharedData.getProjects();
-                }
-            }
-        }
+            projects: Project.query().$promise
+                .then(function (response){
+                    return response.results;
+                }),
+        };
     });

@@ -13,15 +13,35 @@ angular.module('kodkollektivet', [
             .when('/', {
                 templateUrl: 'templates/home.html',
                 controller: 'HomeCtrl',
-		resolve: {
-		    items:function(APIdata){
-			return APIdata.homeItems();
-		    }
-		}
+                resolve: {
+                    profra: function(APIdata){
+                        return APIdata.profra;
+                    },
+                    prolan: function(APIdata){
+                        return APIdata.prolan;
+                    },
+                    projects: function(APIdata){
+                        return APIdata.projects;
+                    },
+                }
             })
             .when('/projects', {
                 templateUrl: 'templates/project/list.html',
                 controller: 'ProjectsCtrl',
+                resolve: {
+                    procon: function(APIdata){
+                        return APIdata.procon;
+                    },
+                    profra: function(APIdata){
+                        return APIdata.profra;
+                    },
+                    prolan: function(APIdata){
+                        return APIdata.prolan;
+                    },
+                    projects: function(APIdata){
+                        return APIdata.projects;
+                    },
+                }
             })
             .when('/project/:slug', {
                 templateUrl: 'templates/project/details.html',
