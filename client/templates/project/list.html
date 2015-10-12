@@ -4,7 +4,8 @@
 </div>
 
 <div ng-repeat="project in projects">
-  <h2 align="center">{{ project.name }}</h2>
+  <a href="#/project/{{project.slug}}">{{project.name}}</a>
+  {{ project.name }}
 
   <ul>
     <li ng-repeat="lan in prolan | filter:project.slug:true">{{ lan.language }}</li>

@@ -35,6 +35,14 @@ angular.module('kodkollektivet', [
             .when('/project/:slug', {
                 templateUrl: 'templates/project/details.html',
                 controller: 'ProjectDetailsCtrl',
+                resolve: {
+                    procon: function (getProcon) { return getProcon; },
+                    profra: function (getProfra) { return getProfra; },
+                    prolan: function (getProlan) { return getProlan; },
+                    projects: function (getProjects) { return getProjects; },
+                    contributors: function (getContributors) { return getContributors; },		    
+                }
+		
             })
             .otherwise({
                 redirectTo: "/"

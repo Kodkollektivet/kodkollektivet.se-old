@@ -21,8 +21,16 @@ angular.module('kodkollektivet.services', ['ngResource'])
             });
     })
 
+    .service('getContributors', function (Contributor){
+        return Contributor.query().$promise
+            .then(function (response){
+                return response;
+            });
+    })
+
+
     .service('getProjects', function (Project){
-        return  Project.query().$promise
+        return Project.query().$promise
             .then(function (response){
                 return response.results;
             });

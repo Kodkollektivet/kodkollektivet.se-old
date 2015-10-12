@@ -12,4 +12,31 @@ angular.module('kodkollektivet.controllers', [])
         $scope.procon = procon;
         $scope.profra = profra;
         $scope.prolan = prolan;
+    })
+
+    .controller('ProjectDetailsCtrl', function($scope, $filter, $routeParams, projects, contributors, procon, profra, prolan){
+	console.log($routeParams);
+        $scope.project = projects.filter(function(project){
+	    if ($routeParams.slug == project.slug){
+		return project;
+	    };
+	})[0];
+	
+	console.log($scope.project);
+	
+        $scope.procons = procon.filter(function(procon){
+	    if ($scope.project.slug == procon.project){
+		return procon;
+	    };
+	});
+	
+        $scope.profra = profra;
+	
+        $scope.prolan = prolan;
+
+	console.log($scope.procons.toString());
+	
+	$scope.contributors = $filter('filter')(contributors, $scope.procons);
+
+
     });
