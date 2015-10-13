@@ -32,7 +32,7 @@ angular.module('kodkollektivet', [
                     projects: function (getProjects) { return getProjects; },
                 }
             })
-            .when('/project/:slug', {
+            .when('/projects/:slug', {
                 templateUrl: 'templates/project/details.html',
                 controller: 'ProjectDetailsCtrl',
                 resolve: {
@@ -44,6 +44,18 @@ angular.module('kodkollektivet', [
                 }
 		
             })
+
+            .when('/contributors', {
+                templateUrl: 'templates/contributor/list.html',
+                controller: 'ContributorsCtrl',
+                resolve: {
+                    procon: function (getProcon) { return getProcon; },
+                    projects: function (getProjects) { return getProjects; },
+                    contributors: function (getContributors) { return getContributors; },		    
+                }
+		
+            })
+
             .otherwise({
                 redirectTo: "/"
             });

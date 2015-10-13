@@ -1,5 +1,4 @@
 angular.module('kodkollektivet.controllers', [])
-
     .controller('HomeCtrl', function($scope, projects, profra, prolan){
         $scope.projects = projects;
         $scope.prolan = prolan;
@@ -33,4 +32,8 @@ angular.module('kodkollektivet.controllers', [])
         $scope.contributors = contributors.filter(function (contributor) {
             return contributor.project === $scope.procon.slug;
         });
+    })
+
+    .controller('ContributorCtrl', function ($scope, contributors){
+        $scope.contributors = contributors;
     });
