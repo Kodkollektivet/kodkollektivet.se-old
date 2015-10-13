@@ -20,7 +20,9 @@ angular.module('kodkollektivet.factories', [])
     })
 
     .factory('Profra', function($resource){
-        return $resource('http://api.kodkollektivet.se/profra/');
+        return $resource('http://api.kodkollektivet.se/procon/');
+        // Temp workaround as api has no profra
+        // return $resource('http://api.kodkollektivet.se/profra/');
     })
 
     .factory('Prolan', function($resource){
