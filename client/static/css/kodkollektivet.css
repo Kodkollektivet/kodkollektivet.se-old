@@ -4,10 +4,17 @@ html, body {
     width: 100%;
 }
 
-/* The parallax will take full height */
-.parallax-window {
-    height: 102%;
-    width: 100%;
+a.fa {
+    color: black;
+}
+
+a.fa:hover {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 .headingtext{
@@ -22,25 +29,7 @@ html, body {
     font-family: 'Orbitron', sans-serif;
 }
 
-.topContainer {
-    background: -webkit-linear-gradient(bottom, rgba(255,0,0,0), rgba(24, 133, 226, 0.8)); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, rgba(255,0,0,0), rgba(24, 133, 226, 0.8)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, rgba(255,0,0,0), rgba(24, 133, 226, 0.8)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom, rgba(255,0,0,0), rgba(24, 133, 226, 0.8)); /* Standard syntax (must be last) */
-    /*background-color: rgba(251, 251, 251, 0.57);*/
-    height: 100%
-}
-
-.page{
-    background-color: #469DE8;
-}
-
 .pageContent{
     min-height:100%;
     background-color: white;
-}
-
-.card {
-    background-color: white;
-    padding: 2rem;
 }

@@ -7,6 +7,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="static/css/kodkollektivet.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Orbitron:900' rel='stylesheet' type='text/css'>
@@ -32,9 +34,8 @@
 </head>
 <body ng-app="kodkollektivet">
   
-  <!-- navbar -->
-  
-  <div ng-view></div>
+    <div class="pageContent" ng-include="'templates/shared/header.html'"></div>
+    <div ng-view class="container"></div>
   
 </body>
 </html>

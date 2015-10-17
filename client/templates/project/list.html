@@ -1,18 +1,29 @@
 
-<div align="center">
-    <h2>Projects</h2>
-</div>
+<div class="">
+    <div>
+        <h2>Projects</h2>
+    </div>
 
-<div ng-repeat="project in projects">
-  <a href="#/project/{{project.slug}}">{{project.name}}</a>
-  {{ project.name }}
-
-  <ul>
-    <li ng-repeat="lan in prolan | filter:project.slug:true">{{ lan.language }}</li>
-  </ul>
-
-  <ul>
-    <li ng-repeat="fra in profra | filter:project.slug:true">{{ fra.framework }}</li>
-  </ul>
-  
+    <table class="table table-striped">
+        <tr>
+          <th>Projects</th>
+          <th>Languages</th>
+          <th>Links</th>
+        </tr>
+        <tr ng-repeat="project in projects">
+            <td>
+                <a href="#/project/{{project.slug}}">{{project.name}}</a>
+            </td>
+            <td>
+                <ul>
+                    <li ng-repeat="lan in prolan | filter:project.slug:true">
+                        <span class="label label-primary">{{ lan.language }}</span>
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <a href="{{project.gh_url}}" class="fa fa-github fa-2x"></a>
+            </td>
+        </tr>
+    </table>
 </div>
