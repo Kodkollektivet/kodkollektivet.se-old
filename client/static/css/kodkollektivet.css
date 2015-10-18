@@ -32,6 +32,7 @@ p {
 }
 
 .topContainer h1{
+    text-shadow: 2px 2px 4px #FFFFFF ;
     position: absolute;
     text-align: center;
     top: 30%;
