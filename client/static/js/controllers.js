@@ -1,9 +1,10 @@
 angular.module('kodkollektivet.controllers', [])
-    .controller('HomeCtrl', function($scope, projects, profra, prolan){
+    .controller('HomeCtrl', function($scope, projects, contributors, profra, prolan){
 
 	$scope.projects = projects;
         $scope.prolan = prolan;
         $scope.profra = profra;
+        $scope.contributors = contributors;	
 
     })
 
@@ -17,7 +18,8 @@ angular.module('kodkollektivet.controllers', [])
     })
 
     .controller('ProjectDetailsCtrl', function($scope, $filter, $routeParams, projects, contributors, procon, profra, prolan){
-        $scope.project = projects.find(function (project) {
+
+	$scope.project = projects.find(function (project) {
             return project.slug === $routeParams.slug;
         });
 
@@ -32,11 +34,17 @@ angular.module('kodkollektivet.controllers', [])
             return language.project === $scope.project.slug;
         });
 
-        $scope.contributors = contributors.filter(function (contributor) {
-            return contributor.project === $scope.procon.slug;
-        });
-    })
+	// Sort contribs
 
+	$scope.contributors = contributors.filter(function (contributor) {
+	    var slugs = $scope.procon.map(function (p) {
+		return p.contributor;
+	    });
+	    return slugs.indexOf(contributor.slug) !== -1;
+	});
+    })
+	
+        
     .controller('ContributorCtrl', function ($scope, contributors){
         $scope.contributors = contributors;
 

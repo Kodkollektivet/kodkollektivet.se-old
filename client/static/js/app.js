@@ -20,6 +20,7 @@ angular.module('kodkollektivet', [
                     profra: function (getProfra) { return getProfra; },
                     prolan: function (getProlan) { return getProlan; },
                     projects: function (getProjects) { return getProjects; },
+                    contributors: function (getContributors) { return getContributors; },		    		    
                 }
             })
             .when('/projects', {
