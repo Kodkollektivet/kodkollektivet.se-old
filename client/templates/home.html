@@ -7,11 +7,17 @@
     </div>
     <div class="panel-body">
 
-        <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">Projects</a></li>
-            <li role="presentation"><a href="#">Members</a></li>
-        </ul>
+	<uib-tabset justified="true">
+	  
+	  <uib-tab heading="Projects">
+	    <project-list></project-list>
+	  </uib-tab>
+	
+	  <uib-tab heading="Members">
+	    Memberss list
+	  </uib-tab>
 
-        <project-list></project-list>
+	</uib-tabset>
+
     </div>
 </div>

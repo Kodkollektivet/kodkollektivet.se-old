@@ -5,9 +5,9 @@
         <th>Languages</th>
         <th>Links</th>
     </tr>
-    <tr ng-repeat="project in projects">
+    <tr ng-repeat="project in projects | orderBy : 'slug'">
         <td>
-            <a href="#/project/{{project.slug}}">{{project.name}}</a>
+            <a href="#/projects/{{project.slug}}">{{project.name}}</a>
         </td>
         <td>
             <ul>
