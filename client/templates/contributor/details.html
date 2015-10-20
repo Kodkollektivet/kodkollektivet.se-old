@@ -1,0 +1,38 @@
+
+
+<h2 align="center">{{ contributor.name }}</h2>
+
+<hr>
+
+<div class="row" align="center">
+  <!-- Website -->
+  <a ng-show="contributor.website.length > 0" href="{{ contributor.website}}" target="_blank">
+    <h1>
+      <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+    </h1>
+  </a>
+
+  <!-- GitHub -->
+  <a ng-show="contributor.gh_html.length > 0" href="{{ contributor.gt_html}}" target="_blank" class="fa fa-github fa-3x"></a>
+
+  <!-- Email -->  
+  <a ng-show="contributor.email.length > 0" href="mailto:{{contributor.email}}" target="_top">
+    <h1>
+      <span class="glyphicon glyphicon glyphicon-envelope" aria-hidden="true"></span>
+    </h1>
+  </a>
+</div>
+
+<img src="{{ contributor.gh_avatar }}" class="img-responsive img-thumbnail" alt="Responsive image">
+
+<div ng-repeat="pro in procon">
+  {{ pro.project }}
+</div>
+
+<hr>
+
+<div ng-repeat="pro in projects">
+  {{ pro.name }}
+</div>
+
+

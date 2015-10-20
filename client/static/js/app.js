@@ -54,11 +54,23 @@ angular.module('kodkollektivet', [
                 resolve: {
                     procon: function (getProcon) { return getProcon; },
                     projects: function (getProjects) { return getProjects; },
-                    contributors: function (getContributors) { return getContributors; },		    
+                    contributors: function (getContributors) { return getContributors; },
                 }
 		
             })
 
+            .when('/contributors/:slug', {
+                templateUrl: 'templates/contributor/details.html',
+                controller: 'ContributorDetailsCtrl',
+                resolve: {
+                    contributors: function (getContributors) { return getContributors; },
+		    procon: function (getProcon) { return getProcon; },
+                    projects: function (getProjects) { return getProjects; },		    
+                }
+		
+            })
+
+	
             .otherwise({
                 redirectTo: "/"
             });

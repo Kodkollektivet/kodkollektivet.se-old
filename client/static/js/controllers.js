@@ -43,6 +43,31 @@ angular.module('kodkollektivet.controllers', [])
         
     .controller('ContributorCtrl', function ($scope, contributors){
         $scope.contributors = contributors;
+	
+    })
+
+    .controller('ContributorDetailsCtrl', function($scope, $filter, $routeParams, contributors, projects, procon){
+
+        $scope.contributor = contributors.find(function (contributor) {
+            return contributor.slug === $routeParams.slug;
+        });
+	
+	console.log($scope.contributor);
+
+        var filter_on_contributor = function(item) {
+            return item.contributor === $scope.contributor.slug;
+        };
+	
+	$scope.procon = procon.filter(filter_on_contributor);
+
+        var project_contributor_slugs = $scope.procon.map(function (pc) {
+            return pc.project;
+        });
+
+        $scope.projects = projects.filter(function (project) {
+            return project_contributor_slugs.indexOf(project.slug) !== -1;
+        });
 
 	
     });
+
