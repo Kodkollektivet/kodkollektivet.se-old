@@ -1,11 +1,13 @@
 angular.module('kodkollektivet', [
     'ngResource',
     'ngRoute',
+    'ngSanitize',
     'ui.bootstrap',
     'kodkollektivet.controllers',
     'kodkollektivet.factories',
     'kodkollektivet.directives',
-    'kodkollektivet.services',    
+    'kodkollektivet.services',
+    'btford.markdown',
 ])
     .config(function($locationProvider, $resourceProvider, $routeProvider)  {
          // This only works in angular 3!
