@@ -7,7 +7,7 @@ from . import models
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Project
-        fields = ('slug', 'name', 'about', 'gh_name', 'gh_id', 'gh_url', 'gh_readme')
+        fields = ('slug', 'name', 'gh_name', 'gh_id', 'gh_url', 'gh_readme')
         lookup_fields = 'slug'
 
 

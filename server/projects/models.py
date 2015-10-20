@@ -1,17 +1,13 @@
 from django.db import models
 from django.utils.text import slugify
-from core.models import TimeStampedModel
+
 from tinymce.models import HTMLField
 
 
 class Project(models.Model):
 
-    class Meta:
-        ordering = ['slug']
-
     name = models.CharField(max_length=254, unique=True)
     slug = models.SlugField(blank=True)
-    about = HTMLField(blank=True)
 
     # Github specific
     gh_name = models.CharField(max_length=254, blank=True)
@@ -31,6 +27,9 @@ class Project(models.Model):
             self.slug = slugify(self.name)
 
         super(Project, self).save(*args, **kwargs)
+        
+    class Meta:
+        ordering = ['slug']
 
     def __unicode__(self):
         return self.name
