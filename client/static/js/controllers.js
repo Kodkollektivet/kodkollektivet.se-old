@@ -19,25 +19,21 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('ProjectDetailsCtrl', function($scope, $filter, $routeParams, projects, contributors, procon, profra, prolan){
 
-        $scope.project = projects.find(function (project) {
-            return project.slug === $routeParams.slug;
-        });
-
-        $scope.procon = procon.filter(function (project_contributor) {
-            return project_contributor.project === $scope.project.slug;
-        });
-
-        $scope.profra = profra.filter(function (framework) {
-            return framework.project === $scope.project.slug;
-        });
-
-        $scope.prolan = prolan.filter(function (language) {
-            return language.project === $scope.project.slug;
-        });
+        var filter_on_project = function(item) {
+            return item.project === $scope.project.slug;
+        };
 
         var project_contributor_slugs = $scope.procon.map(function (pc) {
             return pc.contributor;
         });
+
+        $scope.project = projects.find(function (project) {
+            return project.slug === $routeParams.slug;
+        });
+
+
+        $scope.procon = procon.filter(filter_on_project);
+        $scope.profra = profra.filter(filter_on_project);
 
         $scope.contributors = contributors.filter(function (contributor) {
             return project_contributor_slugs.indexOf(contributor.slug) !== -1;
