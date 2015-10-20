@@ -8,14 +8,16 @@ from rest_framework.permissions import AllowAny
 from projects.models import Project, Contributor, ProCon, ProLan, Language
 from projects.forms import ProjectForm
 
+# Hide this before pushing to the public repo
+OAUTH_TOKEN='?client_id=xxxx&client_secret=xxxx'
 
 def getrepos():
     """
     This function collects all the repos from
     GitHub and store them in the database
     """
-    projects = requests.get('https://api.github.com/orgs/kodkollektivet/repos').json()
-
+    projects = requests.get('https://api.github.com/orgs/kodkollektivet/repos' + OAUTH_TOKEN).json()
+    
     for project in projects:
 
         form = ProjectForm({
@@ -27,7 +29,7 @@ def getrepos():
         if form.is_valid():
             pro, created = Project.objects.get_or_create(**form.data)
 
-            languages = requests.get('https://api.github.com/repos/kodkollektivet/'+project['name']+'/languages').json()
+            languages = requests.get('https://api.github.com/repos/kodkollektivet/'+project['name']+'/languages' + OAUTH_TOKEN).json()
 
             for key, value in languages.iteritems():
                 lan, created = Language.objects.get_or_create(name=key)
@@ -48,7 +50,7 @@ def getcontribs():
 
         if (len(project.gh_name) > 2) or (project.gh_id is not None):  # go in here if gh_name or gh_id
 
-            request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
+            request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors' + OAUTH_TOKEN).json()
 
             for data in request:
                 Contributor.objects.get_or_create(
@@ -66,7 +68,7 @@ def getprocon():
     for project in projects:
 
         if (len(project.gh_name) > 2) or (project.gh_id is not None):  # If it is a github project
-            request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors').json()
+            request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors' + OAUTH_TOKEN).json()
 
             for data in request:
                 contributor = Contributor.objects.get(gh_id=data['id'])
@@ -82,8 +84,3 @@ class GithubHook(APIView):
         getcontribs()
         getprocon()
         return Response(status=status.HTTP_200_OK)
-
-
-
-
-
