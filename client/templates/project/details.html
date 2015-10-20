@@ -1,7 +1,49 @@
+<hr>
 
-<h2>{{ project.name }}</h2>
+<h1 align="center">{{ project.name }}</h1>
+
+<hr>
+
+<div align="center">
+  <a href="{{project.gh_url}}" class="fa fa-github fa-3x"></a>
+</div>
+
+<hr>
+
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+  <h3 align="center">Languages</h3>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="lan in prolan">
+    <h4 align="center">
+      <span class="label label-primary">{{ lan.language }}</span>
+    </h4>
+  </div>
+</div>
 
 
-<p ng-repeat="procon in procons">{{procon.contributor}}</p>
 
-<p ng-repeat="con in contributors">{{con.name}}</p>
+
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+  <h3 align="center">Frameworks</h3>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="fra in profra">
+    <h4 align="center">
+      <span class="label label-success">{{ fra.framework }}</span>
+    </h4>
+  </div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+  <h3 align="center">Members</h3>
+
+    <div ng-repeat="con in contributors">
+	<div align="center">
+	  <h4>	  	  
+	    <a href="#">{{ con.name }}</a>
+	    </h4>
+	</div>
+    </div>
+
+</div>
+
+
