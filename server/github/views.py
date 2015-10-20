@@ -1,4 +1,5 @@
 import requests
+from base64 import b64decode
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -22,11 +23,20 @@ def getrepos():
     projects = requests.get('https://api.github.com/orgs/kodkollektivet/repos' + OAUTH_TOKEN).json()
 
     for project in projects:
+        print(project['name'])
+        b64_readme = requests.get('https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme').json()
+        print(b64_readme)
+        ascii_readme = b64decode(b64_readme['content'])
+        print(ascii_readme)
+        project['readme'] = ascii_readme
+        
+    for project in projects:
 
         form = ProjectForm({
             'gh_name': project['name'],
             'gh_id': project['id'],
-            'gh_url': project['html_url']
+            'gh_url': project['html_url'],
+            'gh_readme': project['readme']
         })
 
         if form.is_valid():
