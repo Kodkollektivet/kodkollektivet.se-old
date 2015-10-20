@@ -3,7 +3,7 @@
     <tr>
         <th>Project</th>
         <th>Languages</th>
-        <th>Links</th>
+        <th>Frameworks</th>
     </tr>
     <tr ng-repeat="project in projects">
         <td>
@@ -11,13 +11,17 @@
         </td>
         <td>
             <ul>
-                <li ng-repeat="lan in prolan">
+                <li ng-repeat="lan in prolan | filter:project.slug:true">
                     <span class="label label-primary">{{ lan.language }}</span>
                 </li>
             </ul>
         </td>
         <td>
-            <a href="{{project.gh_url}}" class="fa fa-github fa-2x"></a>
+            <ul>
+                <li ng-repeat="fra in profra | filter:project.slug:true">
+                    <span class="label label-success">{{ fra.framework }}</span>
+                </li>
+            </ul>
         </td>
     </tr>
 </table>
