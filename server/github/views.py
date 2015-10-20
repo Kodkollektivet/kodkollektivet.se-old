@@ -23,24 +23,16 @@ def getrepos():
     projects = requests.get('https://api.github.com/orgs/kodkollektivet/repos' + OAUTH_TOKEN).json()
 
     for project in projects:
-        print(project['name'])
-        b64_readme = requests.get('https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme').json()
-        print(b64_readme)
-        ascii_readme = b64decode(b64_readme['content'])
-        print(ascii_readme)
-        project['readme'] = ascii_readme
-        
-    for project in projects:
 
         form = ProjectForm({
             'gh_name': project['name'],
             'gh_id': project['id'],
             'gh_url': project['html_url'],
-            'gh_readme': project['readme']
+            'gh_readme': b64decode(requests.get('https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme').json()['content'])
         })
 
         if form.is_valid():
-            pro, created = Project.objects.get_or_create(**form.data)
+            pro, created = Project.objects.update_or_create(**form.data)
 
             languages = requests.get('https://api.github.com/repos/kodkollektivet/'+project['name']+'/languages' + OAUTH_TOKEN).json()
 
@@ -66,7 +58,7 @@ def getcontribs():
             request = requests.get('https://api.github.com/repos/kodkollektivet/'+project.gh_name+'/contributors' + OAUTH_TOKEN).json()
 
             for data in request:
-                Contributor.objects.get_or_create(
+                Contributor.objects.update_or_create(
                     gh_login=data['login'],
                     gh_url=data['url'],
                     gh_id=data['id'],
