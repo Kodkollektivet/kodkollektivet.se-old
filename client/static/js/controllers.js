@@ -10,7 +10,7 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('ProjectsCtrl', function($scope, projects, procon, profra, prolan){
 
-        $Scope.projects = projects;
+        $scope.projects = projects;
         $scope.procon = procon;
         $scope.profra = profra;
         $scope.prolan = prolan;
