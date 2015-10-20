@@ -5,13 +5,13 @@
         <th>Languages</th>
         <th>Links</th>
     </tr>
-    <tr ng-repeat="project in projects | orderBy : 'slug'">
+    <tr ng-repeat="project in projects">
         <td>
             <a href="#/projects/{{project.slug}}">{{project.name}}</a>
         </td>
         <td>
             <ul>
-                <li ng-repeat="lan in prolan | filter:project.slug:true">
+                <li ng-repeat="lan in prolan">
                     <span class="label label-primary">{{ lan.language }}</span>
                 </li>
             </ul>
