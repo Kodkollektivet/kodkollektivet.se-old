@@ -8,8 +8,11 @@ from rest_framework.permissions import AllowAny
 from projects.models import Project, Contributor, ProCon, ProLan, Language
 from projects.forms import ProjectForm
 
-# Hide this before pushing to the public repo
-OAUTH_TOKEN='?client_id=xxxx&client_secret=xxxx'
+# If develop, use settings.settings, else
+# use settings.production.
+#from settings.production import OAUTH_TOKEN
+from settings.settings import OAUTH_TOKEN
+
 
 def getrepos():
     """
@@ -17,7 +20,7 @@ def getrepos():
     GitHub and store them in the database
     """
     projects = requests.get('https://api.github.com/orgs/kodkollektivet/repos' + OAUTH_TOKEN).json()
-    
+
     for project in projects:
 
         form = ProjectForm({
