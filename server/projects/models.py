@@ -6,6 +6,9 @@ from tinymce.models import HTMLField
 
 class Project(models.Model):
 
+    class Meta:
+        ordering = ['slug']
+
     name = models.CharField(max_length=254, unique=True)
     slug = models.SlugField(blank=True)
     about = HTMLField(blank=True)
@@ -31,7 +34,7 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
-    
+
 class Role(models.Model):
     role = models.CharField(max_length=254, blank=True)
     slug = models.CharField(max_length=254, blank=True)
@@ -48,6 +51,9 @@ class Role(models.Model):
 
 
 class Contributor(models.Model):
+
+    class Meta:
+        ordering = ['slug']
 
     name = models.CharField(max_length=254, blank=True)
     slug = models.CharField(max_length=254, blank=True)
