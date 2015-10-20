@@ -23,17 +23,16 @@ angular.module('kodkollektivet.controllers', [])
             return item.project === $scope.project.slug;
         };
 
-        var project_contributor_slugs = $scope.procon.map(function (pc) {
-            return pc.contributor;
-        });
-
         $scope.project = projects.find(function (project) {
             return project.slug === $routeParams.slug;
         });
 
-
         $scope.procon = procon.filter(filter_on_project);
         $scope.profra = profra.filter(filter_on_project);
+
+        var project_contributor_slugs = $scope.procon.map(function (pc) {
+            return pc.contributor;
+        });
 
         $scope.contributors = contributors.filter(function (contributor) {
             return project_contributor_slugs.indexOf(contributor.slug) !== -1;
