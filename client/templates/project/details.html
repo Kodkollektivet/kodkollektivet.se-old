@@ -10,42 +10,40 @@
 
 <hr>
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <h3 align="center">Languages</h3>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="lan in prolan">
-      <h4 align="center">
-	<span class="label label-primary">{{ lan.language }}</span>
-      </h4>
-    </div>
+
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+  <h3 align="center">Languages</h3>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="lan in prolan">
+    <h4 align="center">
+      <span class="label label-primary">{{ lan.language }}</span>
+    </h4>
   </div>
-
-
-
-
-  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <h3 align="center">Frameworks</h3>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="fra in profra">
-      <h4 align="center">
-	<span class="label label-success">{{ fra.framework }}</span>
-      </h4>
-    </div>
-  </div>
-
-
-
-  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-    <h3 align="center">Members</h3>
-
-    <div ng-repeat="con in contributors">
-      <div align="center">
-	<h4>	  	  
-	  <a href="#">{{ con.name }}</a>
-	</h4>
-      </div>
-    </div>
-  </div>
-  
 </div>
 
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+  <h3 align="center">Frameworks</h3>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-repeat="fra in profra">
+    <h4 align="center">
+      <span class="label label-success">{{ fra.framework }}</span>
+    </h4>
+  </div>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+  <h3 align="center">Members</h3>
+  <div ng-repeat="con in contributors">
+    <div align="center">
+      <h4>	  	  
+	<a href="#">{{ con.name }}</a>
+      </h4>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <div class="well">
+    <div btf-markdown="project.gh_readme"></div>    
+  </div>
+</div>
 
