@@ -19,13 +19,14 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('ProjectDetailsCtrl', function($scope, $filter, $routeParams, projects, contributors, procon, profra, prolan){
 
-	$scope.project = projects.find(function (project) {
+        $scope.project = projects.find(function (project) {
             return project.slug === $routeParams.slug;
         });
 
         $scope.procon = procon.filter(function (project_contributor) {
             return project_contributor.project === $scope.project.slug;
         });
+
         $scope.profra = profra.filter(function (framework) {
             return framework.project === $scope.project.slug;
         });
@@ -34,14 +35,13 @@ angular.module('kodkollektivet.controllers', [])
             return language.project === $scope.project.slug;
         });
 
-	// Sort contribs
+        var project_contributor_slugs = $scope.procon.map(function (pc) {
+            return pc.contributor;
+        });
 
-	$scope.contributors = contributors.filter(function (contributor) {
-	    var slugs = $scope.procon.map(function (p) {
-		return p.contributor;
-	    });
-	    return slugs.indexOf(contributor.slug) !== -1;
-	});
+        $scope.contributors = contributors.filter(function (contributor) {
+            return project_contributor_slugs.indexOf(contributor.slug) !== -1;
+        });
     })
 	
         
