@@ -67,7 +67,8 @@ class Contributor(models.Model):
     gh_url = models.CharField(max_length=254)
     gh_id = models.IntegerField()
     gh_html = models.CharField(max_length=254, blank=True)
-
+    gh_avatar = models.CharField(max_length=254, blank=True)
+    
     def save(self, *args, **kwargs):
         """
         Set name and slug

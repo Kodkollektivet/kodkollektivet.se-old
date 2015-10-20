@@ -10,7 +10,7 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('ProjectsCtrl', function($scope, projects, procon, profra, prolan){
 
-        $Scope.projects = projects;
+        $scope.projects = projects;
         $scope.procon = procon;
         $scope.profra = profra;
         $scope.prolan = prolan;
@@ -29,7 +29,8 @@ angular.module('kodkollektivet.controllers', [])
 
         $scope.procon = procon.filter(filter_on_project);
         $scope.profra = profra.filter(filter_on_project);
-
+	$scope.prolan = prolan.filter(filter_on_project);
+	
         var project_contributor_slugs = $scope.procon.map(function (pc) {
             return pc.contributor;
         });

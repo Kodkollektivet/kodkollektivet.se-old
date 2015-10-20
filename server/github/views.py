@@ -70,7 +70,8 @@ def getcontribs():
                     gh_login=data['login'],
                     gh_url=data['url'],
                     gh_id=data['id'],
-                    gh_html=data['html_url']
+                    gh_html=data['html_url'],
+                    gh_avatar=data['avatar_url']
                 )
 
 

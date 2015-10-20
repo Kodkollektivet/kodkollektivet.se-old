@@ -1,6 +1,10 @@
 
-<div ng-repeat="contributor in contributors">
-
-  <a href="#/members/{{ contributor.slug }}">{{ contributor.name }}</a>
-  
-</div>
+<table class="table">
+    <tr ng-repeat="contributor in contributors">
+        <td><a href="#/members/{{ contributor.slug }}">{{ contributor.name }}</a></td>
+        <td>
+            <a href="{{contributor.gh_html}}" class="fa fa-github fa-2x"></a>
+            <a href="{{contributor.website}}" class="fa fa-external-link-square fa-2x" ng-show="contributor.website"></a>
+        </td>
+    </tr>
+</table>
