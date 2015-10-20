@@ -34,4 +34,13 @@ angular.module('kodkollektivet.services', ['ngResource'])
             .then(function (response){
                 return response.results;
             });
+    })
+
+    .service('getProjectReadme', function (slug){
+        return $resource("https://api.github.com/repos/kodkollektivet/" + slug + "/readme").query().$promise
+            .then(function (response){
+                return response;
+            });
     });
+
+        return $resource('http://api.kodkollektivet.se/contributor/');

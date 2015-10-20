@@ -5,7 +5,8 @@ angular.module('kodkollektivet', [
     'kodkollektivet.controllers',
     'kodkollektivet.factories',
     'kodkollektivet.directives',
-    'kodkollektivet.services',    
+    'kodkollektivet.services',
+    //'ng-showdown', 
 ])
     .config(function($locationProvider, $resourceProvider, $routeProvider)  {
          // This only works in angular 3!
@@ -41,7 +42,9 @@ angular.module('kodkollektivet', [
                     profra: function (getProfra) { return getProfra; },
                     prolan: function (getProlan) { return getProlan; },
                     projects: function (getProjects) { return getProjects; },
-                    contributors: function (getContributors) { return getContributors; },		    
+		    projectreadme: function ($route.current.params.slug) { return getProjectReadme; },
+                    contributors: function (getContributors) { return getContributors; },
+		    
                 }
 		
             })

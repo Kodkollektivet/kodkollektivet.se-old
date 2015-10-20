@@ -10,14 +10,14 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('ProjectsCtrl', function($scope, projects, procon, profra, prolan){
 
-        $Scope.projects = projects;
+        $scope.projects = projects;
         $scope.procon = procon;
         $scope.profra = profra;
         $scope.prolan = prolan;
 	
     })
 
-    .controller('ProjectDetailsCtrl', function($scope, $filter, $routeParams, projects, contributors, procon, profra, prolan){
+    .controller('ProjectDetailsCtrl', function($scope, $filter, $routeParams, $http, projects, contributors, procon, profra, prolan, projectreadme){
 
 	$scope.project = projects.find(function (project) {
             return project.slug === $routeParams.slug;
@@ -42,6 +42,16 @@ angular.module('kodkollektivet.controllers', [])
 	    });
 	    return slugs.indexOf(contributor.slug) !== -1;
 	});
+
+	console.log(projectreadme);
+
+	// $http.get("https://api.github.com/repos/kodkollektivet/" + $scope.project.gh_name + "/readme")
+	//     .success(function successCallback(response){
+	// 	$scope.repoReadme = atob(response.content);
+	//     });
+
+
+	
     })
 	
         
