@@ -2,7 +2,6 @@ django
 djangorestframework
 markdown
 django-filter
-django-tinymce
 django-cors-headers
 gunicorn
 psycopg2

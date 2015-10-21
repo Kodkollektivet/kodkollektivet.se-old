@@ -139,15 +139,6 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-# TinyMCE Settings
-TINYMCE_DEFAULT_CONFIG = {
-    'plugins': "table,paste,searchreplace,fullscreen",
-    'theme': "advanced",
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 10,
-}
-
-
 # Bootstrap Admin
 # https://github.com/django-admin-bootstrapped/django-admin-bootstrapped
 DAB_FIELD_RENDERER = 'django_admin_bootstrapped.renderers.BootstrapFieldRenderer'

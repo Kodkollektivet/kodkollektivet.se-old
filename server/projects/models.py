@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 
-from tinymce.models import HTMLField
-
 
 class Project(models.Model):
 
@@ -59,7 +57,7 @@ class Contributor(models.Model):
     slug = models.CharField(max_length=254, blank=True)
     email = models.EmailField(max_length=254, blank=True)
     website = models.CharField(max_length=254, blank=True)
-    about = HTMLField(blank=True)
+    about = models.TextField(blank=True, help_text='Markdown syntax')
 
     # Github specific
     gh_login = models.CharField(max_length=254)

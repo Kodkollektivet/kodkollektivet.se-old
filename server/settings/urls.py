@@ -37,6 +37,7 @@ router.register(r'prorol', projectView.ProRolViewset)
 
 
 urlpatterns = [
+    
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^', include(router.urls)),
@@ -44,6 +45,5 @@ urlpatterns = [
     url(r'^contact/', include('contact.urls')),
 
     url(r'^github/', include('github.urls')),
-    url(r'^tinymce/', include('tinymce.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
