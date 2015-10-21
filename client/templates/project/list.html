@@ -1,27 +1,40 @@
 
 <table class="table">
-    <tr>
-        <th>Project</th>
-        <th>Languages</th>
-        <th>Frameworks</th>
-    </tr>
-    <tr ng-repeat="project in projects">
-        <td>
-            <a href="#/projects/{{project.slug}}">{{project.name}}</a>
-        </td>
-        <td>
-            <ul>
-                <li ng-repeat="lan in prolan | filter:project.slug:true">
-                    <span class="label label-primary">{{ lan.language }}</span>
-                </li>
-            </ul>
-        </td>
-        <td>
-            <ul>
-                <li ng-repeat="fra in profra | filter:project.slug:true">
-                    <span class="label label-success">{{ fra.framework }}</span>
-                </li>
-            </ul>
-        </td>
-    </tr>
+  <tr>
+    <th>
+      <h4>Project</h4>
+    </th>
+    <th>
+      <h4>Languages</h4>
+    </th>
+    <th>
+      <h4>Frameworks</h4>
+    </th>
+  </tr>
+  <tr ng-repeat="project in projects">
+    <td>
+      
+      <a href="#/projects/{{project.slug}}">
+	<h4>{{project.name}}</h4>	    
+      </a>
+    </td>
+    <td>
+      <ul>
+	<li ng-repeat="lan in prolan | filter:project.slug:true">
+	  <h4>
+            <span class="label label-primary">{{ lan.language }}</span>
+	  </h4>		  
+	</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+	<li ng-repeat="fra in profra | filter:project.slug:true">
+	  <h4>		
+            <span class="label label-success">{{ fra.framework }}</span>
+	  </h4>
+	</li>
+      </ul>
+    </td>
+  </tr>
 </table>
