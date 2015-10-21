@@ -57,6 +57,7 @@ class Contributor(models.Model):
     slug = models.CharField(max_length=254, blank=True)
     email = models.EmailField(max_length=254, blank=True)
     website = models.CharField(max_length=254, blank=True)
+    linkedin = models.CharField(max_length=254, blank=True)    
     about = models.TextField(blank=True, help_text='Markdown syntax')
 
     # Github specific

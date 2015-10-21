@@ -14,7 +14,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 class ContributorSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Contributor
-        fields = ('slug', 'name', 'email', 'website', 'about', 'gh_login', 'gh_url', 'gh_html', 'gh_avatar')
+        fields = ('slug', 'name', 'email', 'website', 'about', 'gh_login', 'gh_url', 'gh_html', 'gh_avatar', 'linkedin')
         lookup_fields = 'slug'
 
 
