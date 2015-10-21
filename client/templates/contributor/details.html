@@ -7,37 +7,65 @@
 
 
 <div align="center">
-
+  
   <!-- GitHub -->
-  <a ng-show="contributor.gh_html.length > 0" href="{{ contributor.gh_html}}" target="_blank" class="fa fa-github fa-3x"></a>
-
+  <a ng-show="contributor.gh_html.length > 0"
+     popover-placement="left"
+     uib-popover="{{contributor.name}}s GitHub profile"
+     popover-trigger="mouseenter"
+     href="{{ contributor.gh_html}}"
+     target="_blank"
+     class="fa fa-github fa-3x"
+     style="margin-left: 2vh;"
+     ></a>
+  
   <!-- Website -->
-  <a ng-show="contributor.website.length > 0" href="{{ contributor.website}}" target="_blank">
-    <h1 style="display: inline; margin-left: 3vh;">
-      <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-    </h1>
-  </a>
-
+  <a ng-show="contributor.website.length > 0"
+     popover-placement="bottom"
+     uib-popover="{{contributor.name}}s personal site"
+     popover-trigger="mouseenter"
+     href="{{ contributor.website}}"
+     target="_blank"
+     class="fa fa-globe fa-3x"
+     style="margin-left: 2vh;"     
+     ></a>
+  
+  <!-- Linkedin -->
+  <a ng-show="contributor.linkedin.length > 0"
+     popover-placement="top"
+     uib-popover="{{contributor.name}}s LinkedIn profile"
+     popover-trigger="mouseenter"
+     href="{{ contributor.gh_html}}"
+     target="_blank"
+     class="fa fa-linkedin fa-3x"
+     style="margin-left: 2vh;"     
+     ></a>
+  
   <!-- Email -->  
-  <a ng-show="contributor.email.length > 0" href="mailto:{{contributor.email}}" target="_top">
-    <h1 style="display: inline; margin-left: 3vh;">
-      <span class="glyphicon glyphicon glyphicon-envelope" aria-hidden="true"></span>
-    </h1>
-  </a>
+  <a ng-show="contributor.email.length > 0"
+     popover-placement="right"
+     uib-popover="Contact {{contributor.name}} by mail"
+     popover-trigger="mouseenter"
+     href="mailto:{{contributor.email}}"
+     target="_top"
+     class="fa fa-envelope fa-3x"
+     style="margin-left: 2vh;"     
+     ></a>
 </div>
 
 <hr>
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" align="center">
-    <img src="{{ contributor.gh_avatar }}" class="img-responsive" style="width: 50%">
+    <img src="{{ contributor.gh_avatar }}" class="img-responsive img-thumbnail" style="width: 50%">
   </div>  
 
   <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">  
     <div align="center">
-      <h2>Contributed to projects:</h2>
-      <a ng-repeat="pro in projects"href="#/projects/{{ pro.slug }}">
-	<h3>{{ pro.name }}</h3>
+      <h3>Contributed to projects:</h3>
+      <a ng-repeat="pro in projects"
+	 href="#/projects/{{ pro.slug }}">
+	<h4>{{ pro.name }}</h4>
       </a>
     </div>
   </div>  
