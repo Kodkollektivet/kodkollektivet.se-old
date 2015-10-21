@@ -5,7 +5,12 @@
 <hr>
 
 <div align="center">
-  <a href="{{project.gh_url}}" class="fa fa-github fa-3x"></a>
+  <a ng-show="project.gh_url.length > 1"
+     href="{{project.gh_url}}"
+     popover-placement="top"
+     uib-popover="Check out the source code"
+     popover-trigger="mouseenter"
+     class="fa fa-github fa-3x"></a>
 </div>
 
 <hr>
