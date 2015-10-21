@@ -9,11 +9,14 @@ angular.module('kodkollektivet', [
     'kodkollektivet.services',
     'btford.markdown',
 ])
-    .config(function($locationProvider, $resourceProvider, $routeProvider)  {
+    .config(function($locationProvider, $resourceProvider, $routeProvider, $httpProvider)  {
          // This only works in angular 3!
         // It makes dealing with Django slashes at the end of everything easier.
         $resourceProvider.defaults.stripTrailingSlashes = false;
-        
+	
+        // Django expects jQuery like headers
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+	
         $routeProvider
             .when('/', {
                 templateUrl: 'templates/home.html',

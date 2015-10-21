@@ -16,13 +16,10 @@ class ContactApiView(APIView):
     permission_classes = (AllowAny,)
 
     def post(self, request, format=None):
+        
         serializer = ContactSerializer(data=request.data)
+        
         if serializer.is_valid():
-            print(serializer)
-            print(request.data['name'])
-            print(request.data['email'])
-            print(request.data['tel'])
-            print(request.data['text'])
             send_mail('Contact: %s' % request.data['name'],
                       '''
                       \n
@@ -44,4 +41,5 @@ class ContactApiView(APIView):
                       fail_silently=False
                       )
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
