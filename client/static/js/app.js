@@ -18,6 +18,7 @@ angular.module('kodkollektivet', [
         $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 	
         $routeProvider
+        
             .when('/', {
                 templateUrl: 'templates/home.html',
                 controller: 'HomeCtrl',
@@ -25,9 +26,11 @@ angular.module('kodkollektivet', [
                     profra: function (getProfra) { return getProfra; },
                     prolan: function (getProlan) { return getProlan; },
                     projects: function (getProjects) { return getProjects; },
-                    contributors: function (getContributors) { return getContributors; },		    		    
+                    contributors: function (getContributors) { return getContributors; },
+                    news: function (NewsService) { return NewsService; },
                 }
             })
+        
             .when('/projects', {
                 templateUrl: 'templates/project/list.html',
                 controller: 'ProjectsCtrl',
@@ -38,6 +41,7 @@ angular.module('kodkollektivet', [
                     projects: function (getProjects) { return getProjects; },
                 }
             })
+        
             .when('/projects/:slug', {
                 templateUrl: 'templates/project/details.html',
                 controller: 'ProjectDetailsCtrl',
@@ -48,18 +52,16 @@ angular.module('kodkollektivet', [
                     projects: function (getProjects) { return getProjects; },
                     contributors: function (getContributors) { return getContributors; },		    
                 }
-		
             })
 
             .when('/contributors', {
                 templateUrl: 'templates/contributor/list.html',
-                controller: 'ContributorsCtrl',
+                controller: 'ContributorCtrl',
                 resolve: {
                     procon: function (getProcon) { return getProcon; },
                     projects: function (getProjects) { return getProjects; },
                     contributors: function (getContributors) { return getContributors; },
                 }
-		
             })
 
             .when('/contributors/:slug', {
@@ -67,13 +69,21 @@ angular.module('kodkollektivet', [
                 controller: 'ContributorDetailsCtrl',
                 resolve: {
                     contributors: function (getContributors) { return getContributors; },
-		    procon: function (getProcon) { return getProcon; },
+		            procon: function (getProcon) { return getProcon; },
                     projects: function (getProjects) { return getProjects; },		    
                 }
 		
             })
 
-	
+            .when('/news', {
+                templateUrl: 'templates/news/list.html',
+                controller: 'NewsCtrl',
+                resolve: {
+                    news: function (NewsService) { return NewsService; },                    
+                }
+            })
+
+	    
             .otherwise({
                 redirectTo: "/"
             });

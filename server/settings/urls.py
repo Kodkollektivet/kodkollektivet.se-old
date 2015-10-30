@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 
 from info.views import InfoViewsets
+from news import views
 from projects import views as projectView
 
 router = DefaultRouter()
@@ -34,6 +35,7 @@ router.register(r'profra', projectView.ProFraViewset)
 router.register(r'procon', projectView.ProConViewset)
 router.register(r'prolan', projectView.ProLanViewset)
 router.register(r'prorol', projectView.ProRolViewset)
+router.register(r'news', views.NewsViewset)
 
 
 urlpatterns = [

@@ -20,23 +20,3 @@ p {
     text-align: justify;
 }
 
-.header {
-    width: 100%;
-    height: 70%;
-    margin-bottom: 20px;
-
-    background-image: url(http://censemaking.files.wordpress.com/2012/12/educationhead.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.topContainer h1{
-    text-shadow: 2px 2px 4px #FFFFFF ;
-    position: absolute;
-    text-align: center;
-    top: 30%;
-    width: 100%;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 3em;
-}

@@ -1,11 +1,11 @@
 angular.module('kodkollektivet.controllers', [])
-    .controller('HomeCtrl', function($scope, projects, contributors, profra, prolan){
+    .controller('HomeCtrl', function($scope, projects, contributors, profra, prolan, news){
 
 	$scope.projects = projects;
         $scope.prolan = prolan;
         $scope.profra = profra;
         $scope.contributors = contributors;	
-
+        $scope.news = news;
     })
 
     .controller('ProjectsCtrl', function($scope, projects, procon, profra, prolan){
@@ -70,6 +70,11 @@ angular.module('kodkollektivet.controllers', [])
 
 	
     })
+
+    .controller('NewsCtrl', function($scope, news){
+        $scope.news = news;
+    })
+
 
     .controller('ContactController', function($scope, Contact){
 

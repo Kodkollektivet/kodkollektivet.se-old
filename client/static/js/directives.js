@@ -20,6 +20,14 @@ angular.module('kodkollektivet.directives', [])
             restrict: 'E',
             templateUrl: 'templates/contributor/list.html'
         };
+    })
+
+    .directive('newsList', function(){
+        return {
+            restrict: 'E',
+            templateUrl: 'templates/news/list.html'
+        };
     });
+
 
                

@@ -1,0 +1,11 @@
+
+<div>
+  <h1>News</h1>
+</div>  
+  
+
+<uib-accordion close-others="oneAtATime">
+  <uib-accordion-group heading="{{n.created | date:'yyyy-MM-dd' }} {{n.title}}" ng-repeat="n in news">
+    <div btf-markdown="n.body"></div>    
+  </uib-accordion-group>
+</uib-accordion>

@@ -20,13 +20,15 @@ angular.module('kodkollektivet.factories', [])
     })
 
     .factory('Profra', function($resource){
-        return $resource('http://api.kodkollektivet.se/procon/');
-        // Temp workaround as api has no profra
-        // return $resource('http://api.kodkollektivet.se/profra/');
+        return $resource('http://api.kodkollektivet.se/profra/');
     })
 
     .factory('Prolan', function($resource){
         return $resource('http://api.kodkollektivet.se/prolan/');
+    })
+
+    .factory('News', function($resource){
+        return $resource('http://127.0.0.1:8001/news/');
     })
 
     .factory('Contact', function($resource) {

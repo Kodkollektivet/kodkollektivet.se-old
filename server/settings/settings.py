@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'github',
     'projects',
     'contact',
+    'news',
 )
 
 MIDDLEWARE_CLASSES = (

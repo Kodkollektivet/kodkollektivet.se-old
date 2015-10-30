@@ -34,4 +34,12 @@ angular.module('kodkollektivet.services', ['ngResource'])
             .then(function (response){
                 return response.results;
             });
+    })
+
+    .service('NewsService', function (News){
+        return News.query().$promise
+            .then(function (response){
+                return response;
+            });
     });
+
