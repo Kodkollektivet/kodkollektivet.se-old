@@ -4,7 +4,7 @@ from . import models
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    exclude = ('slug',)    
+    exclude = ('slug', 'gh_name', 'gh_id', 'gh_url', 'gh_readme')    
 
     
 class ContributorAdmin(admin.ModelAdmin):
