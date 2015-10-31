@@ -30,7 +30,7 @@ class Project(models.Model):
         ordering = ['slug']
 
     def __unicode__(self):
-        return self.name
+        return self.slug
 
 
 class Role(models.Model):
@@ -45,7 +45,7 @@ class Role(models.Model):
         super(Role, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.role
+        return self.slug
 
 
 class Contributor(models.Model):
@@ -78,7 +78,7 @@ class Contributor(models.Model):
         super(Contributor, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.name
+        return self.slug
 
         
 class Language(models.Model):
@@ -93,7 +93,7 @@ class Language(models.Model):
         super(Language, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.name
+        return self.slug
 
         
 class Framework(models.Model):
@@ -108,7 +108,7 @@ class Framework(models.Model):
         super(Framework, self).save(*args, **kwargs)
 
     def __unicode__(self):
-        return self.name
+        return self.slug
 
 
 class ProFra(models.Model):
