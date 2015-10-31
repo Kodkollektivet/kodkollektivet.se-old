@@ -1,6 +1,8 @@
 import requests
 from base64 import b64decode
 
+from django.utils.text import slugify
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -32,13 +34,15 @@ def getrepos():
         })
 
         if form.is_valid():
-            pro, created = Project.objects.update_or_create(**form.data)
+            # Creates or updates a project. It fist looks it match on gh_name
+            pro, created = Project.objects.update_or_create(gh_name=form.data['gh_name'], defaults=form.data)
 
             languages = requests.get('https://api.github.com/repos/kodkollektivet/'+project['name']+'/languages' + OAUTH_TOKEN).json()
 
             for key, value in languages.iteritems():
-                lan, created = Language.objects.get_or_create(name=key)
-                obj, created = ProLan.objects.get_or_create(project=pro, language=lan)
+                lan, created = Language.objects.update_or_create(name=key)
+                obj, created = ProLan.objects.update_or_create(project=pro, language=lan)
+
 
 
 def getcontribs():
