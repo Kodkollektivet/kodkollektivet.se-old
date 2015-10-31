@@ -8,10 +8,16 @@ class News(TimeStampedModel):
     title = models.CharField(max_length=254)
     body = models.TextField()
 
+    
     def save(self, *args, **kwargs):
         """
         Set slug
         """
         self.slug = slugify(self.title)
         super(News, self).save(*args, **kwargs)
+
+        
+    class Meta:
+        ordering = ['-created']
+        
     
