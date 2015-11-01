@@ -52,8 +52,6 @@ angular.module('kodkollektivet.controllers', [])
             return contributor.slug === $routeParams.slug;
         });
 	
-	console.log($scope.contributor);
-
         var filter_on_contributor = function(item) {
             return item.contributor === $scope.contributor.slug;
         };

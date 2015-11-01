@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/kodkollektivet.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/bootstrap.css">    
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"> -->
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 
     <!-- Fonts -->
@@ -36,9 +38,11 @@
     <base href="/">
 </head>
 <body ng-app="kodkollektivet">
-  
-    <div class="header" ng-include="'templates/shared/header.html'"></div>
-    <div ng-view class="container" autoscroll="true"></div>
-    <div class="container" ng-include="'templates/shared/contact.html'"></div>
+
+  <div ng-include="'templates/shared/forkme.html'"></div>
+  <div class="container" ng-include="'templates/shared/header.html'"></div>
+  <hr>
+  <div ng-view class="container" autoscroll="true"></div>
+  <div class="container" ng-include="'templates/shared/contact.html'"></div>
 </body>
 </html>
