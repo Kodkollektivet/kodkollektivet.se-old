@@ -6,6 +6,7 @@ angular.module('kodkollektivet.controllers', [])
         $scope.profra = profra;
         $scope.contributors = contributors;	
         $scope.news = news;
+        $scope.oneAtATime = true;        
     })
 
     .controller('ProjectsCtrl', function($scope, projects, procon, profra, prolan){
@@ -71,6 +72,7 @@ angular.module('kodkollektivet.controllers', [])
 
     .controller('NewsCtrl', function($scope, news){
         $scope.news = news;
+        $scope.oneAtATime = true;
     })
 
 
