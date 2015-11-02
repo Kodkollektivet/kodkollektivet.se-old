@@ -11,7 +11,7 @@ class Project(models.Model):
     gh_name = models.CharField(max_length=254, blank=True)
     gh_id = models.IntegerField(blank=True, null=True)
     gh_url = models.CharField(max_length=254, blank=True)
-    gh_readme = models.TextField(blank=True)
+    gh_readme = models.TextField(blank=True, help_text='Project readme. Markdown syntax!')
     
     def save(self, *args, **kwargs):
 
