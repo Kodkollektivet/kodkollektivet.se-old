@@ -9,7 +9,7 @@ class ProjectAdmin(admin.ModelAdmin):
     
 class ContributorAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    exclude = ('slug',)    
+    exclude = ('slug','gh_login', 'gh_url', 'gh_id', 'gh_html', 'gh_avatar')    
     
 
 class RoleAdmin(admin.ModelAdmin):
