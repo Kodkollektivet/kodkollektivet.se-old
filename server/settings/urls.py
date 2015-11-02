@@ -20,12 +20,10 @@ from django.conf.urls.static import static
 
 from rest_framework.routers import DefaultRouter
 
-from info.views import InfoViewsets
 from news import views
 from projects import views as projectView
 
 router = DefaultRouter()
-router.register(r'info', InfoViewsets)
 router.register(r'project', projectView.ProjectViewset)
 router.register(r'contributor', projectView.ContributorViewset)
 router.register(r'language', projectView.LanguageViewset)
