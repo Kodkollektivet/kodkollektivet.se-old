@@ -28,7 +28,7 @@ angular.module('kodkollektivet.factories', [])
     })
 
     .factory('News', function($resource){
-        return $resource('http://127.0.0.1:8001/news/');
+        return $resource('http://api.kodkollektivet.se/news/');
     })
 
     .factory('Contact', function($resource) {
