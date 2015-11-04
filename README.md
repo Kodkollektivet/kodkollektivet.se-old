@@ -1,10 +1,4 @@
-# Diagrams, flowcharts and related
-
-[General overview](https://drive.google.com/file/d/0Bzd3vno6_BwVcTFEbHVCbzlpLWM/view?usp=sharing)
-
-
-# Kodkollektivet
---------------------------
+# Kodkollektivet.se
 
 - A central point where committed students can be introduced to each other,
   solve problems, and be creative. The goals of Kodkollektivet is to give
