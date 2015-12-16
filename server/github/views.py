@@ -13,8 +13,10 @@ from projects.forms import ProjectForm
 
 # If develop, use settings.settings, else
 # use settings.production.
-#from settings.production import OAUTH_TOKEN
-from settings.settings import OAUTH_TOKEN
+try:
+    from settings.production import OAUTH_TOKEN
+except ImportError:
+    from settings.settings import OAUTH_TOKEN
 
 
 def getrepos():
@@ -30,7 +32,7 @@ def getrepos():
             'gh_name': project['name'],
             'gh_id': project['id'],
             'gh_url': project['html_url'],
-            'gh_readme': b64decode(requests.get('https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme').json()['content'])
+            'gh_readme': b64decode(requests.get('https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme' + OAUTH_TOKEN).json()['content'])
         })
 
         if form.is_valid():
