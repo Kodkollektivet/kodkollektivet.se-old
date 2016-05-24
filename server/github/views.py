@@ -2,6 +2,7 @@ import requests
 from base64 import b64decode
 
 from django.utils.text import slugify
+import pprint
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -28,11 +29,19 @@ def getrepos():
 
     for project in projects:
 
+        readme = requests.get(
+            'https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme' + OAUTH_TOKEN).json()
+
+        try:
+            readme = b64decode(readme['content'])
+        except:
+            readme = ''
+
         form = ProjectForm({
             'gh_name': project['name'],
             'gh_id': project['id'],
             'gh_url': project['html_url'],
-            'gh_readme': b64decode(requests.get('https://api.github.com/repos/kodkollektivet/' + project['name'] + '/readme' + OAUTH_TOKEN).json()['content'])
+            'gh_readme': readme
         })
 
         if form.is_valid():
