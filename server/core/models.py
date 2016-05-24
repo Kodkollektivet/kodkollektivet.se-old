@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class TimeStampedModel(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -8,3 +9,4 @@ class TimeStampedModel(models.Model):
         abstract = True
         get_latest_by = 'modified'
         ordering = ('-modified', '-created')
+

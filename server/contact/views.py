@@ -1,5 +1,3 @@
-
-from django.http import Http404
 from django.core.mail import send_mail
 
 from rest_framework.views import APIView
@@ -8,6 +6,7 @@ from rest_framework import status
 from rest_framework.permissions import AllowAny
 
 from .serializers import ContactSerializer
+
 
 class ContactApiView(APIView):
     """
@@ -43,3 +42,4 @@ class ContactApiView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from . import models
 
+
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name',)
     exclude = ('slug', 'gh_name', 'gh_id', 'gh_url')    
@@ -43,7 +44,6 @@ class ProRolAdmin(admin.ModelAdmin):
     list_display = ('project', 'contributor', 'role',)
 
 
-    
 admin.site.register(models.Project, ProjectAdmin)
 admin.site.register(models.Language, LanguageAdmin)
 admin.site.register(models.Contributor, ContributorAdmin)

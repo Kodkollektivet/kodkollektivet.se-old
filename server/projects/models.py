@@ -116,14 +116,15 @@ class ProFra(models.Model):
     framework = models.ForeignKey(Framework)
 
     class Meta:
-        verbose_name ='Project-Framework relation'
+        verbose_name = 'Project-Framework relation'
+
 
 class ProCon(models.Model):
     project = models.ForeignKey(Project)
     contributor = models.ForeignKey(Contributor)
 
     class Meta:
-        verbose_name ='Project-Contributor relation'
+        verbose_name = 'Project-Contributor relation'
     
 
 class ProLan(models.Model):
@@ -131,7 +132,7 @@ class ProLan(models.Model):
     language = models.ForeignKey(Language)
 
     class Meta:
-        verbose_name ='Project-Language relation'
+        verbose_name = 'Project-Language relation'
 
 
 class ProRol(models.Model):
@@ -140,7 +141,6 @@ class ProRol(models.Model):
     role = models.ForeignKey(Role)
 
     class Meta:
-        verbose_name ='Project-Role-Contributor relation'
-
+        verbose_name = 'Project-Role-Contributor relation'
 
 
