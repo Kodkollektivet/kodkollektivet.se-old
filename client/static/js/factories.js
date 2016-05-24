@@ -3,7 +3,7 @@ angular.module('kodkollektivet.factories', [])
     // TODO: Make Project factory generic to allow next/previous
     .factory('Project', function($resource){
         return $resource('http://api.kodkollektivet.se/project/', {}, {
-            query: { method: "GET", isArray: false }
+            query: { method: "GET", isArray: true }
         });
     })
 

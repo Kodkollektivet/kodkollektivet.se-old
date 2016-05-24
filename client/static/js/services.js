@@ -32,7 +32,7 @@ angular.module('kodkollektivet.services', ['ngResource'])
     .service('getProjects', function (Project){
         return Project.query().$promise
             .then(function (response){
-                return response.results;
+                return response;
             });
     })
 
