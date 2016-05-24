@@ -14,7 +14,7 @@ class ProjectViewset(viewsets.ModelViewSet):
     queryset = models.Project.objects.all()
     serializer_class = serializers.ProjectSerializer
     lookup_field = 'slug'
-    pagination_class = ProjectResultPagination
+    #pagination_class = ProjectResultPagination
 
 
 class ContributorViewset(viewsets.ModelViewSet):
